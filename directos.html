@@ -1,0 +1,599 @@
+<!--
+  CUATRO4TROS × GSNOW888 — DIRECTOS (directos.html — archivo completo de videos del canal)
+  Un solo archivo, CSS y JS inline. Dependencias externas: Google Fonts + miniaturas i.ytimg.com
+  (contenido real del canal — excepción ratificada).
+  Secciones: Hero compacto (negro, nieve) → Archivo (blanco, TODAS las cards de video reales)
+  → CTA (negro, seguir en YouTube + chip de horario) → Footer (blanco, efecto montaña).
+  Canal real: youtube.com/@Cuatro4tros. Directos automáticos: web/videos-endpoint/ (pegar
+  VIDEOS_URL al final; aquí se renderizan TODOS los videos del endpoint, sin recorte).
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIRECTOS — GSNOW888 · CUATRO4TROS</title>
+<meta name="description" content="El archivo completo de directos de GSNOW888 en el canal @Cuatro4tros: cada VOD como pasó, sin cortes ni resumen conveniente. Cuerpo, mente, alma y dinero, en cámara.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 48'><polyline points='4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2' fill='none' stroke='%235FC8F5' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<!-- Open Graph: las URLs absolutas funcionan tras el deploy en gsnow888.com -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Directos — GSNOW888 · CUATRO4TROS">
+<meta property="og:description" content="El archivo completo de los directos: sin cortes, sin resumen conveniente. El VOD completo o nada.">
+<meta property="og:image" content="https://gsnow888.com/fotos/nb-trading.jpg">
+<meta property="og:url" content="https://gsnow888.com/directos.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET + TOKENS (canon GSNOW888 × CUATRO4TROS) ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --negro:#07090C;
+  --carbon:#0E1216;
+  --blanco:#F4F8FB;
+  --copo:#FFFFFF;
+  --niebla:#9FB3BF;                   /* solo sobre fondos oscuros */
+  --linea:rgba(159,179,191,.18);      /* hairlines sobre oscuro */
+  --linea-luz:rgba(14,18,22,.14);     /* hairlines sobre claro */
+  --tinta-suave:rgba(7,9,12,.62);     /* texto secundario sobre claro (AA) */
+  --p-cuerpo:#A9DFF7;
+  --p-mente:#5FC8F5;
+  --p-alma:#2E9BD6;
+  --p-dinero:#14648F;                 /* NUNCA como color de texto */
+  --acento:#5FC8F5;
+  --t:240ms cubic-bezier(.25,.6,.35,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;
+  background:var(--negro);color:var(--blanco);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.sec--light a:focus-visible,.sec--light button:focus-visible,.footer a:focus-visible{outline-color:var(--negro)}  /* el acento no pasa 3:1 sobre claro */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+.sec{padding-top:clamp(88px,11vw,144px);padding-bottom:clamp(88px,11vw,144px)}
+.sec--dark{background:var(--negro);color:var(--blanco)}
+.sec--light{background:var(--blanco);color:var(--negro)}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--niebla);margin-bottom:24px;
+}
+.sec--light .eyebrow{color:var(--tinta-suave)}
+.titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:.02em;
+  margin-bottom:24px;max-width:18ch;
+}
+.lead{font-size:clamp(17px,2vw,20px);max-width:62ch;color:var(--niebla)}
+.sec--light .lead{color:var(--tinta-suave)}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:10;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:var(--negro);border-bottom:1px solid var(--linea);
+}
+.nav__marca{display:flex;align-items:center;gap:16px;color:var(--blanco)}
+.nav__marca svg{width:40px;height:16px;flex:none}
+.nav__wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;letter-spacing:.12em}
+.nav__wordmark span{color:var(--acento)}
+.nav__links{display:none;align-items:center;gap:32px}
+.nav__links a{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);transition:color var(--t);
+}
+.nav__links a:hover{color:var(--copo)}
+.nav__cta{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acento);
+  border:1px solid var(--acento);padding:8px 16px;
+  transition:background var(--t),color var(--t);
+}
+.nav__cta:hover{background:var(--acento);color:var(--negro)}
+@media (min-width:900px){.nav__links{display:flex}}
+
+/* ============ HERO COMPACTO ============ */
+/* Video de fondo del hero (Veo 3.1): carga condicional — poster siempre presente */
+.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__velo{position:absolute;inset:0;background:rgba(7,9,12,.62)}  /* scrim = tinta-suave ratificado */
+.hero .wrap{position:relative;z-index:1}
+.hero{
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;background:var(--negro);
+  padding:calc(56px + clamp(72px,10vw,120px)) 24px clamp(72px,10vw,120px);
+}
+canvas.nieve{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero__inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.hero__simbolo{color:var(--blanco);margin-bottom:32px}
+.hero__simbolo svg{width:clamp(72px,9vw,104px);height:auto}
+.hero .eyebrow{margin-bottom:16px}
+.hero .titulo{margin-bottom:0}
+.hero__lead{margin:24px auto 0;max-width:52ch;color:var(--niebla);font-size:clamp(16px,1.9vw,19px)}
+
+/* ============ ARCHIVO DE DIRECTOS (patrón canónico .directo) ============ */
+.directos{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+.directo{
+  --p:var(--acento);
+  border:1px solid var(--linea-luz);background:var(--blanco);
+  transition:transform var(--t),border-color var(--t);
+}
+.directo:hover{transform:translateY(-4px);border-color:var(--p)}
+.directo--cuerpo{--p:var(--p-cuerpo)}
+.directo--mente{--p:var(--p-mente)}
+.directo--alma{--p:var(--p-alma)}
+.directo--dinero{--p:var(--p-dinero)}
+/* Miniatura del VOD: thumbnail real de YouTube (contenido real — excepción ratificada) */
+.directo__thumb{position:relative;aspect-ratio:16/9;background:var(--negro);overflow:hidden}
+.directo__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.directo__linea{height:2px;background:var(--p)}
+.directo__cuerpo{padding:24px}
+.directo__meta{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tinta-suave);display:flex;gap:8px;flex-wrap:wrap;
+}
+.directo__titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(24px,2.4vw,30px);
+  line-height:1.05;letter-spacing:.02em;color:var(--negro);margin-top:16px;
+}
+.ver-todo{
+  display:inline-block;margin-top:48px;
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--negro);border-bottom:2px solid var(--negro);
+  padding-bottom:4px;transition:color var(--t),border-color var(--t);
+}
+.ver-todo:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+
+/* ============ CTA SEGUIR (negro compacto) ============ */
+.sec--cta{padding-top:clamp(72px,9vw,112px);padding-bottom:clamp(72px,9vw,112px)}
+.cta__acciones{display:flex;gap:16px;margin-top:48px;flex-wrap:wrap}
+.btn{
+  display:inline-block;font-family:'Space Mono',monospace;
+  font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:16px 32px;border:1px solid var(--copo);color:var(--copo);
+  transition:background var(--t),color var(--t),border-color var(--t);
+}
+.btn:hover{background:var(--copo);color:var(--negro)}
+.btn--acento{background:var(--acento);border-color:var(--acento);color:var(--negro)}  /* primario relleno: un solo CTA domina */
+.btn--acento:hover{background:transparent;color:var(--acento)}
+.chip-horario{
+  margin-top:32px;display:inline-flex;align-items:flex-start;gap:8px;
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);line-height:2;
+  border:1px solid var(--linea);padding:8px 16px;text-align:left;
+}
+.chip-horario .punto{width:8px;height:8px;border-radius:50%;background:var(--acento);flex:none;margin-top:8px}
+
+/* ============ FOOTER (efecto montaña) ============ */
+.footer{
+  position:relative;overflow:hidden;
+  background:var(--blanco);color:var(--negro);
+  padding:96px 24px 176px;text-align:center;
+}
+.footer > :not(.footer__paisaje){position:relative;z-index:1}
+.footer svg.logo{width:96px;height:auto;margin:0 auto 24px;color:var(--negro)}
+.footer svg.logo polyline{transition:stroke-dashoffset 2.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje{position:absolute;left:0;right:0;bottom:0;pointer-events:none}
+.footer__paisaje svg{display:block;width:100%;height:clamp(80px,12vw,170px)}
+.footer__paisaje .capa{opacity:0;transform:translateY(28px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje .capa--lejana{transition-delay:.2s}
+.footer__paisaje .capa--cercana{transition-delay:.45s}
+.footer.en-vista .capa{opacity:1;transform:none}
+.footer__firma{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,3vw,32px);letter-spacing:.12em;line-height:1;margin-bottom:16px;
+}
+.footer__handles{
+  display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;
+}
+.footer__handles a{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--negro);
+  border-bottom:2px solid var(--negro);padding-bottom:2px;
+  transition:color var(--t),border-color var(--t);
+}
+.footer__handles a:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+.footer__linea{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-indent:.32em;
+  text-transform:uppercase;color:var(--tinta-suave);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (min-width:720px){
+  .wrap{padding-left:40px;padding-right:40px}
+  .directos{grid-template-columns:repeat(2,1fr)}
+}
+@media (min-width:1200px){
+  .wrap{padding-left:48px;padding-right:48px}
+  .directos{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+<style>
+/* Descargo global: opiniones, no asesoría de inversión (ver aviso-legal.html) */
+.footer__descargo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--tinta-suave);max-width:64ch;margin:0 auto 16px}
+.footer__descargo a{text-decoration:underline}
+.footer__identidad{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:16px}
+</style>
+<style>
+/* ── Nav v2: menú desplegable global (desktop + móvil) ── */
+.nav__der{display:flex;align-items:center;gap:16px}
+.nav__menu-btn{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copo);background:none;border:1px solid var(--linea);
+  padding:8px 16px;cursor:pointer;transition:border-color var(--t),color var(--t);
+}
+.nav__menu-btn:hover{border-color:var(--niebla)}
+.nav__menu-btn[aria-expanded="true"]{color:var(--acento);border-color:var(--acento)}
+.menu-global{
+  position:fixed;top:56px;left:0;right:0;z-index:9;
+  background:var(--negro);border-bottom:1px solid var(--linea);
+  display:grid;gap:0;padding:16px 24px 24px;
+}
+.menu-global a{
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);padding:14px 8px;
+  border-bottom:1px solid var(--linea);transition:color var(--t);
+}
+.menu-global a:last-child{border-bottom:none}
+.menu-global a:hover{color:var(--copo)}
+.menu-global a[aria-current="page"]{color:var(--acento)}
+.menu-global[hidden]{display:none}
+@media (min-width:900px){.menu-global{grid-template-columns:repeat(3,1fr);gap:0 48px;padding:24px 48px 32px}}
+</style>
+<style>
+/* ── Ports Cult UI aprobados (2026-08-17): grain global + menú animado ── */
+/* texture-overlay → grain estático de película, canon "fine grain" */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+/* family-drawer → despliegue del menú con stagger */
+@media (prefers-reduced-motion:no-preference){
+  .menu-global:not([hidden]){animation:menuDown .28s cubic-bezier(.22,.6,.2,1)}
+  .menu-global:not([hidden]) a{animation:menuItem .35s cubic-bezier(.22,.6,.2,1) backwards}
+  .menu-global a:nth-child(1){animation-delay:.03s}
+  .menu-global a:nth-child(2){animation-delay:.06s}
+  .menu-global a:nth-child(3){animation-delay:.09s}
+  .menu-global a:nth-child(4){animation-delay:.12s}
+  .menu-global a:nth-child(5){animation-delay:.15s}
+  .menu-global a:nth-child(6){animation-delay:.18s}
+  @keyframes menuDown{from{opacity:0;transform:translateY(-8px)}}
+  @keyframes menuItem{from{opacity:0;transform:translateY(-6px)}}
+}
+</style>
+<style>
+/* shift-card → zoom de miniatura + reveal "Ver el VOD" (scrim derivado del negro) */
+.directo{overflow:hidden}
+.directo__thumb img{transition:transform .5s cubic-bezier(.22,.6,.2,1)}
+.directo:hover .directo__thumb img{transform:scale(1.05)}
+.directo__thumb::after{
+  content:"Ver el VOD →";position:absolute;left:0;right:0;bottom:0;
+  padding:12px 16px;background:rgba(7,9,12,.78);color:var(--copo);
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  transform:translateY(101%);transition:transform .35s cubic-bezier(.22,.6,.2,1);
+}
+.directo:hover .directo__thumb::after{transform:none}
+@media (prefers-reduced-motion:reduce){.directo__thumb::after{display:none}}
+</style>
+<style>
+/* youtube-video-player → lightbox */
+.vod-modal{position:fixed;inset:0;z-index:100;background:rgba(7,9,12,.9);display:flex;align-items:center;justify-content:center;padding:24px}
+.vod-modal[hidden]{display:none}
+.vod-modal__caja{width:min(1080px,100%)}
+.vod-modal__cerrar{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copo);background:none;border:1px solid var(--linea);
+  padding:8px 16px;cursor:pointer;margin-bottom:16px;transition:border-color var(--t);
+}
+.vod-modal__cerrar:hover{border-color:var(--copo)}
+.vod-modal__marco{aspect-ratio:16/9;border:1px solid var(--linea)}
+.vod-modal__marco iframe{width:100%;height:100%;border:0;display:block}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV (global — copiada del canon) ════════ -->
+<nav class="nav" aria-label="Principal">
+  <a class="nav__marca" href="index.html">
+    <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="nav__wordmark">GSNOW<span>888</span></span>
+  </a>
+  <div class="nav__der">
+    <a class="nav__cta" href="https://www.youtube.com/@Cuatro4tros/live" target="_blank" rel="noopener">Ver en vivo</a>
+    <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="menu-global">Menú</button>
+  </div>
+</nav>
+<div class="menu-global" id="menu-global" hidden>
+  <a href="index.html">Inicio</a>
+  <a href="directos.html" aria-current="page">Directos</a>
+  <a href="pilares.html">El sistema</a>
+  <a href="historia.html">Quién soy</a>
+  <a href="letter.html">Letter</a>
+  <a href="curso.html">Curso</a>
+</div>
+
+<!-- ════════ HERO COMPACTO (negro, nieve) ════════ -->
+<header class="hero">
+  <video class="hero__video" poster="media/hero-charts-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+  <div class="hero__velo" aria-hidden="true"></div>
+  <canvas class="nieve" aria-hidden="true"></canvas>
+  <div class="hero__inner">
+    <div class="hero__simbolo" role="img" aria-label="Símbolo GSNOW888: montaña de cuatro picos con final de línea de tendencia">
+      <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="eyebrow">Directos · El archivo</p>
+    <h1 class="titulo">Lo que pasó en cámara.</h1>
+    <p class="hero__lead">Cada directo, completo y como fue: sin cortes, sin música épica, sin resumen conveniente. El VOD completo o nada — si quieres el highlight, aquí no está.</p>
+  </div>
+</header>
+
+<main>
+<!-- ════════ 01 ARCHIVO (blanco) ════════ -->
+<section class="sec sec--light" id="archivo" aria-labelledby="t-archivo">
+  <div class="wrap">
+    <p class="eyebrow">01 · Todos los directos</p>
+    <h2 class="titulo" id="t-archivo">El archivo, sin editar.</h2>
+    <p class="lead">Videos reales del canal @Cuatro4tros, del más reciente al primero. La subida se documenta entera — también los días torpes.</p>
+
+    <!-- Videos REALES del canal youtube.com/@Cuatro4tros (feed RSS, 2026-08-14).
+         Cards fijas de respaldo: si el endpoint de videos está desplegado, el script
+         del final las reemplaza con TODOS los videos del canal automáticamente. -->
+    <div class="directos">
+      <a class="directo" href="https://www.youtube.com/watch?v=jkepu1cMpvA" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/jkepu1cMpvA/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Directo</span><span>·</span><span>14 ago 2026</span></p>
+          <h3 class="directo__titulo">Live with Restream, August 14</h3>
+        </div>
+      </a>
+      <a class="directo" href="https://www.youtube.com/watch?v=Icb0C0osIzg" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/Icb0C0osIzg/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Directo</span><span>·</span><span>5 may 2026</span></p>
+          <h3 class="directo__titulo">Primer Stream 693</h3>
+        </div>
+      </a>
+      <a class="directo" href="https://www.youtube.com/watch?v=jXLGiMlmBDs" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/jXLGiMlmBDs/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Directo</span><span>·</span><span>4 may 2026</span></p>
+          <h3 class="directo__titulo">Primer Stream 693</h3>
+        </div>
+      </a>
+      <a class="directo directo--alma" href="https://www.youtube.com/watch?v=ryZdbLdtidY" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/ryZdbLdtidY/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Alma</span><span>·</span><span>10 jul 2025</span></p>
+          <h3 class="directo__titulo">Tú creas el mundo que tanto te quejas</h3>
+        </div>
+      </a>
+      <a class="directo directo--mente" href="https://www.youtube.com/watch?v=um6FPvsg_kc" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/um6FPvsg_kc/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Mente</span><span>·</span><span>16 jun 2025</span></p>
+          <h3 class="directo__titulo">La fórmula real de la acción (y por qué no avanzas)</h3>
+        </div>
+      </a>
+      <a class="directo directo--cuerpo" href="https://www.youtube.com/watch?v=TbwZXtvU0W4" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/TbwZXtvU0W4/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Cuerpo</span><span>·</span><span>3 jun 2025</span></p>
+          <h3 class="directo__titulo">No fue fácil, pero lo hice igual (sigo con el 1%)</h3>
+        </div>
+      </a>
+      <a class="directo" href="https://www.youtube.com/watch?v=3b9_5cxxSSU" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/3b9_5cxxSSU/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Directo</span><span>·</span><span>29 may 2025</span></p>
+          <h3 class="directo__titulo">Así empiezo mi camino siendo 1% mejor diario</h3>
+        </div>
+      </a>
+      <a class="directo" href="https://www.youtube.com/watch?v=y1mpz3SHYYc" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/y1mpz3SHYYc/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Directo</span><span>·</span><span>29 abr 2025</span></p>
+          <h3 class="directo__titulo">Un video diciendo la verdad</h3>
+        </div>
+      </a>
+    </div>
+
+    <a class="ver-todo" href="https://www.youtube.com/@Cuatro4tros/streams" target="_blank" rel="noopener">Ver el canal en YouTube →</a>
+  </div>
+</section>
+
+<!-- ════════ 02 CTA SEGUIR (negro compacto) ════════ -->
+<section class="sec sec--dark sec--cta" id="seguir" aria-labelledby="t-seguir">
+  <div class="wrap">
+    <p class="eyebrow">02 · La subida sigue</p>
+    <h2 class="titulo" id="t-seguir">El próximo VOD se graba en vivo.</h2>
+    <p class="lead">Nada de esto se repite: si quieres verlo mientras pasa, el canal es el único lugar. Suscríbete y ya — sin embudo, sin regalo descargable.</p>
+
+    <div class="cta__acciones">
+      <a class="btn btn--acento" href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">Seguir en YouTube</a>
+    </div>
+
+    <!-- PLACEHOLDER: confirmar días y horas de los directos antes de publicar -->
+    <p class="chip-horario"><span class="punto" aria-hidden="true"></span><span>En vivo con el mercado abierto — análisis y plática · Un video de pensamientos cada semana</span></p>
+  </div>
+</section>
+</main>
+
+<!-- ════════ FOOTER (blanco — efecto montaña) ════════ -->
+<footer class="footer">
+  <div class="footer__paisaje" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="capa capa--lejana" fill="rgba(7,9,12,.05)" d="M0,200 L0,120 L140,60 L260,110 L420,40 L560,100 L720,24 L880,90 L1040,50 L1200,110 L1320,70 L1440,130 L1440,200 Z"/>
+      <path class="capa capa--cercana" fill="rgba(7,9,12,.09)" d="M0,200 L0,150 L180,90 L340,140 L520,70 L700,130 L900,50 L1080,120 L1260,80 L1440,140 L1440,200 Z"/>
+    </svg>
+  </div>
+  <svg class="logo" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- wordmark monocromo: el 888 solo lleva azul sobre fondos oscuros (regla canónica) -->
+  <p class="footer__firma">GSNOW888 — 1% cada día</p>
+  <p class="footer__identidad">GSNOW888 es Gregorio Sánchez Calderón.</p>
+  <div class="footer__handles">
+    <a href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://kick.com/gsnow888" target="_blank" rel="noopener">Kick</a>
+    <a href="https://www.instagram.com/gsnow888" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/gregorio-s%C3%A1nchez-calder%C3%B3n-6ba82128a/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="historia.html#perfil">Perfil</a>
+    <a href="privacidad.html">Privacidad</a>
+    <a href="aviso-legal.html">Aviso legal</a>
+  </div>
+  <p class="footer__descargo">Todo lo publicado aquí son opiniones personales con fines educativos. No es asesoría de inversión. <a href="aviso-legal.html">Aviso legal</a></p>
+  <p class="footer__linea">Cuerpo · Mente · Alma · Dinero</p>
+</footer>
+
+<!-- Nieve canónica (solo el hero tiene canvas.nieve) -->
+<script>
+(function(){
+  var c=document.querySelector('canvas.nieve');if(!c)return;var x=c.getContext('2d'),W,H,F=[];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+  function build(){F=[];var N=Math.round(W*H/18000);for(var i=0;i<N;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,s:.25+Math.random()*.9,a:.12+Math.random()*.45,p:Math.random()*6.28})}
+  function frame(){x.clearRect(0,0,W,H);for(var i=0;i<F.length;i++){var f=F[i];x.globalAlpha=f.a;x.beginPath();x.arc(f.x,f.y,f.r,0,6.28);x.fillStyle='#FFFFFF';x.fill();if(!reduce){f.y+=f.s;f.x+=Math.sin(f.p+=.004)*.18;if(f.y>H+4){f.y=-4;f.x=Math.random()*W}}}x.globalAlpha=1;if(!reduce)requestAnimationFrame(frame)}
+  /* el resize repuebla la densidad y repinta un frame también en modo estático (reduced motion) */
+  addEventListener('resize',function(){size();build();if(reduce)frame()});
+  size();build();frame();
+})();
+</script>
+<script>
+/* Efecto montaña del cierre: el trazo del logo se dibuja pico a pico y el
+   paisaje emerge, al entrar el footer en vista. Con prefers-reduced-motion
+   se muestra el estado final sin animación. */
+(function(){
+  var footer=document.querySelector('.footer');if(!footer)return;
+  var poly=footer.querySelector('svg.logo polyline');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(poly&&!reduce){
+    var L=poly.getTotalLength();
+    poly.style.strokeDasharray=L;
+    poly.style.strokeDashoffset=L;
+  }
+  function activar(){
+    footer.classList.add('en-vista');
+    if(poly&&!reduce)poly.style.strokeDashoffset='0';
+  }
+  if(reduce||!('IntersectionObserver' in window)){activar();return}
+  var io=new IntersectionObserver(function(es){
+    if(es[0].isIntersecting){activar();io.disconnect()}
+  },{threshold:.3});
+  io.observe(footer);
+})();
+</script>
+<script>
+/* Archivo AUTOMÁTICO: si el endpoint está desplegado (web/videos-endpoint/INSTRUCCIONES.md),
+   esta página renderiza TODOS los videos que devuelva el canal @Cuatro4tros (sin recorte —
+   es el archivo completo). Si no está configurado o falla, quedan las cards fijas de
+   respaldo — la página nunca se rompe. */
+(function(){
+  var VIDEOS_URL='PEGAR_URL_DEL_ENDPOINT_DE_VIDEOS';
+  if(VIDEOS_URL.indexOf('http')!==0)return;
+  fetch(VIDEOS_URL).then(function(r){return r.json()}).then(function(vs){
+    if(!vs||!vs.length)return;
+    var cont=document.querySelector('.directos');if(!cont)return;
+    var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    cont.innerHTML=vs.map(function(v){
+      var f=String(v.fecha||'').split('-');
+      var fecha=f.length===3?parseInt(f[2],10)+' '+MESES[parseInt(f[1],10)-1]+' '+f[0]:'';
+      var esc=document.createElement('div');esc.textContent=v.titulo||'';var titulo=esc.innerHTML;
+      var id=encodeURIComponent(v.videoId||'');
+      return '<a class="directo" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener">'
+        +'<div class="directo__thumb"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="" loading="lazy"></div>'
+        +'<div class="directo__linea" aria-hidden="true"></div>'
+        +'<div class="directo__cuerpo"><p class="directo__meta"><span>Directo</span><span>·</span><span>'+fecha+'</span></p>'
+        +'<h3 class="directo__titulo">'+titulo+'</h3></div></a>';
+    }).join('');
+  }).catch(function(){});
+})();
+</script>
+<script>
+/* Video de fondo: solo pantallas >=720px, sin prefers-reduced-motion, sin save-data */
+(function(){
+  var v=document.querySelector('.hero__video');if(!v)return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn=navigator.connection||{};
+  if(reduce||conn.saveData||!matchMedia('(min-width:720px)').matches)return;
+  var s=document.createElement('source');s.src='media/hero-charts.mp4';s.type='video/mp4';
+  v.appendChild(s);v.load();
+  var p=v.play();if(p&&p.catch)p.catch(function(){});
+})();
+</script>
+<script>
+/* Menú desplegable global */
+(function(){
+  var btn=document.querySelector('.nav__menu-btn'),menu=document.getElementById('menu-global');
+  if(!btn||!menu)return;
+  function cerrar(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(){
+    var abierto=!menu.hidden;
+    menu.hidden=abierto;btn.setAttribute('aria-expanded',String(!abierto));
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+  document.addEventListener('click',function(e){
+    if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))cerrar();
+  });
+})();
+</script>
+<div class="vod-modal" id="vod-modal" hidden>
+  <div class="vod-modal__caja">
+    <button class="vod-modal__cerrar" type="button" aria-label="Cerrar">Cerrar ✕</button>
+    <div class="vod-modal__marco"><iframe id="vod-iframe" title="VOD del directo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  </div>
+</div>
+<script>
+/* youtube-video-player → lightbox de VODs (embed nocookie; con JS apagado, el link abre YouTube) */
+(function(){
+  var modal=document.getElementById('vod-modal'),frame=document.getElementById('vod-iframe');
+  if(!modal||!frame)return;
+  function cerrar(){modal.hidden=true;frame.removeAttribute('src');document.body.style.overflow=''}
+  document.querySelectorAll('a.directo[href*="watch?v="]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=(a.href.match(/[?&]v=([\w-]{6,})/)||[])[1];
+      if(!id)return;
+      e.preventDefault();
+      frame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1';
+      modal.hidden=false;document.body.style.overflow='hidden';
+    });
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)cerrar()});
+  modal.querySelector('.vod-modal__cerrar').addEventListener('click',cerrar);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+})();
+</script>
+</body>
+</html>

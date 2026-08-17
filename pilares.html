@@ -1,0 +1,482 @@
+<!--
+  CUATRO4TROS × GSNOW888 — EL SISTEMA (pilares.html)
+  Un solo archivo, CSS y JS inline. Única dependencia externa: Google Fonts.
+  La página de los 4 pilares: hero compacto negro (sin nieve) → CUERPO (negro) →
+  MENTE (blanco) → ALMA (negro) → DINERO (blanco) → cierre (negro, símbolo grande)
+  → footer blanco con efecto montaña (canon del index).
+  Contenido canónico: mantras, descriptores, series y cadencias del branding book
+  (branding/gsnow888_branding_book.html); tips 1% del index.html.
+  Nota de alternancia: el hero y la sección CUERPO comparten fondo negro a propósito
+  (bloque de apertura continuo, separado por hairline); del resto, alternancia estricta.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUATRO4TROS — El sistema · Cuerpo, Mente, Alma, Dinero</title>
+<meta name="description" content="Los 4 pilares del sistema CUATRO4TROS: CUERPO, MENTE, ALMA y DINERO. Cada pilar con su mantra, su serie en vivo y su tip en formato 1%. GSNOW888 es quien streamea; CUATRO4TROS es el sistema que vive y enseña.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 48'><polyline points='4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2' fill='none' stroke='%235FC8F5' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<!-- Open Graph: las URLs absolutas funcionan tras el deploy en gsnow888.com -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="El sistema — CUATRO4TROS · Cuerpo, Mente, Alma, Dinero">
+<meta property="og:description" content="Los 4 pilares que GSNOW888 practica en vivo: cada uno con su serie, su mantra y su acción de 1%.">
+<meta property="og:image" content="https://gsnow888.com/fotos/pilar-alma.jpg">
+<meta property="og:url" content="https://gsnow888.com/pilares.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET + TOKENS (canon GSNOW888 × CUATRO4TROS) ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --negro:#07090C;
+  --carbon:#0E1216;
+  --blanco:#F4F8FB;
+  --copo:#FFFFFF;
+  --niebla:#9FB3BF;                   /* solo sobre fondos oscuros */
+  --linea:rgba(159,179,191,.18);      /* hairlines sobre oscuro */
+  --linea-luz:rgba(14,18,22,.14);     /* hairlines sobre claro */
+  --tinta-suave:rgba(7,9,12,.62);     /* texto secundario sobre claro (AA) */
+  --p-cuerpo:#A9DFF7;
+  --p-mente:#5FC8F5;
+  --p-alma:#2E9BD6;
+  --p-dinero:#14648F;                 /* NUNCA como color de texto */
+  --acento:#5FC8F5;
+  --t:240ms cubic-bezier(.25,.6,.35,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;
+  background:var(--negro);color:var(--blanco);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.sec--light a:focus-visible,.sec--light button:focus-visible,.footer a:focus-visible{outline-color:var(--negro)}  /* el acento no pasa 3:1 sobre claro */
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+.sec{padding-top:clamp(88px,11vw,144px);padding-bottom:clamp(88px,11vw,144px)}
+.sec--dark{background:var(--negro);color:var(--blanco)}
+.sec--light{background:var(--blanco);color:var(--negro)}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--niebla);margin-bottom:24px;
+}
+.sec--light .eyebrow{color:var(--tinta-suave)}
+.titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:.02em;
+  margin-bottom:24px;max-width:18ch;
+}
+.lead{font-size:clamp(17px,2vw,20px);max-width:62ch;color:var(--niebla)}
+.sec--light .lead{color:var(--tinta-suave)}
+.btn{
+  display:inline-block;font-family:'Space Mono',monospace;
+  font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:16px 32px;border:1px solid var(--copo);color:var(--copo);
+  transition:background var(--t),color var(--t),border-color var(--t);
+}
+.btn:hover{background:var(--copo);color:var(--negro)}
+.btn--acento{background:var(--acento);border-color:var(--acento);color:var(--negro)}  /* primario relleno: un solo CTA domina */
+.btn--acento:hover{background:transparent;color:var(--acento)}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:10;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:var(--negro);border-bottom:1px solid var(--linea);
+}
+.nav__marca{display:flex;align-items:center;gap:16px;color:var(--blanco)}
+.nav__marca svg{width:40px;height:16px;flex:none}
+.nav__wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;letter-spacing:.12em}
+.nav__wordmark span{color:var(--acento)}
+.nav__links{display:none;align-items:center;gap:32px}
+.nav__links a{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);transition:color var(--t);
+}
+.nav__links a:hover{color:var(--copo)}
+.nav__cta{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acento);
+  border:1px solid var(--acento);padding:8px 16px;
+  transition:background var(--t),color var(--t);
+}
+.nav__cta:hover{background:var(--acento);color:var(--negro)}
+@media (min-width:900px){.nav__links{display:flex}}
+
+/* ============ HERO COMPACTO (negro, sin nieve) ============ */
+.hero{
+  background:var(--negro);color:var(--blanco);
+  padding:clamp(136px,18vw,208px) 24px clamp(88px,11vw,136px);
+  text-align:center;
+}
+.hero__inner{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.hero__simbolo{color:var(--blanco);margin-bottom:40px}
+.hero__simbolo svg{width:clamp(88px,12vw,140px);height:auto}
+.hero .eyebrow{margin-bottom:16px}
+.hero__frase{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(40px,7vw,88px);line-height:1.02;letter-spacing:.02em;
+  max-width:20ch;margin:0 auto;
+}
+.hero__frase em{font-style:normal;color:var(--acento)}
+.hero__linea{
+  font-family:'Space Mono',monospace;font-size:clamp(12px,1.6vw,16px);
+  letter-spacing:.32em;text-transform:uppercase;color:var(--niebla);
+  margin-top:32px;margin-right:-.32em;
+}
+.hero__lead{margin:24px auto 0;max-width:56ch;color:var(--niebla);font-size:clamp(16px,1.9vw,19px)}
+
+/* ============ SECCIONES DE PILAR ============ */
+.pilar{--p:var(--acento)}
+.pilar--cuerpo{--p:var(--p-cuerpo);border-top:1px solid var(--linea)}  /* hairline: separa el bloque negro de apertura */
+.pilar--mente{--p:var(--p-mente)}
+.pilar--alma{--p:var(--p-alma)}
+.pilar--dinero{--p:var(--p-dinero)}
+.pilar__num{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--niebla);
+  display:flex;align-items:center;gap:8px;margin-bottom:24px;
+}
+.sec--light .pilar__num{color:var(--tinta-suave)}
+.pilar__num::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--p);flex:none}
+.sec--light .pilar__num::before{box-shadow:inset 0 0 0 1px var(--linea-luz)}  /* anillo: los azules pálidos no se pierden sobre blanco */
+.pilar__nombre{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(64px,12vw,144px);line-height:.95;letter-spacing:.04em;
+  color:var(--copo);
+}
+.sec--light .pilar__nombre{color:var(--negro)}
+.pilar__descr{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--niebla);margin-top:8px;
+}
+.sec--light .pilar__descr{color:var(--tinta-suave)}
+.pilar__acento{width:56px;height:2px;background:var(--p);margin:32px 0}  /* el azul del pilar: una línea, nunca un fondo */
+.pilar__mantra{
+  font-size:clamp(19px,2.4vw,24px);font-weight:700;line-height:1.4;
+  color:var(--copo);max-width:30ch;margin-bottom:24px;
+}
+.sec--light .pilar__mantra{color:var(--negro)}
+.pilar__texto{max-width:62ch;color:var(--niebla)}
+.sec--light .pilar__texto{color:var(--tinta-suave)}
+
+/* Paneles serie + tip (no interactivos: sin hover — nada de falsas affordances) */
+.pilar__paneles{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+/* Imagen cinematográfica del pilar (Higgsfield Nano Banana Pro 4k, canon B/N + azul) */
+.pilar__foto{width:100%;aspect-ratio:3/2;object-fit:cover;margin-top:56px;border:1px solid var(--linea);display:block}
+.sec--light .pilar__foto{border-color:var(--linea-luz)}
+.panel{border:1px solid var(--linea);padding:32px 24px}
+.sec--light .panel{border-color:var(--linea-luz)}
+.panel__label{
+  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--niebla);margin-bottom:24px;
+}
+.sec--light .panel__label{color:var(--tinta-suave)}
+.panel__serie{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:.04em;color:var(--copo);
+}
+.sec--light .panel__serie{color:var(--negro)}
+.panel__desc{color:var(--niebla);max-width:44ch;margin-top:16px;font-size:16px}
+.sec--light .panel__desc{color:var(--tinta-suave)}
+.panel__cadencia{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blanco);margin-top:24px;
+}
+.sec--light .panel__cadencia{color:var(--negro)}
+.panel__verdad{
+  font-size:clamp(17px,2vw,21px);font-weight:700;line-height:1.45;
+  color:var(--copo);max-width:34ch;margin-bottom:24px;
+}
+.sec--light .panel__verdad{color:var(--negro)}
+.panel__accion{
+  font-family:'Space Mono',monospace;font-size:13px;line-height:1.7;
+  color:var(--blanco);letter-spacing:.02em;
+}
+.sec--light .panel__accion{color:var(--negro)}
+
+/* ============ CIERRE (negro — símbolo grande) ============ */
+.cierre{text-align:center}
+.cierre__simbolo{color:var(--blanco);margin:0 auto 48px;display:flex;justify-content:center}
+.cierre__simbolo svg{width:min(480px,80vw);height:auto}
+.cierre .titulo{margin-left:auto;margin-right:auto}
+.cierre .lead{margin-left:auto;margin-right:auto}
+.cierre__ctas{display:flex;gap:16px;margin-top:48px;flex-wrap:wrap;justify-content:center}
+
+/* ============ FOOTER (efecto montaña — canon del index) ============ */
+.footer{
+  position:relative;overflow:hidden;
+  background:var(--blanco);color:var(--negro);
+  padding:96px 24px 176px;text-align:center;
+}
+.footer > :not(.footer__paisaje){position:relative;z-index:1}
+.footer svg.logo{width:96px;height:auto;margin:0 auto 24px;color:var(--negro)}
+.footer svg.logo polyline{transition:stroke-dashoffset 2.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje{position:absolute;left:0;right:0;bottom:0;pointer-events:none}
+.footer__paisaje svg{display:block;width:100%;height:clamp(80px,12vw,170px)}
+.footer__paisaje .capa{opacity:0;transform:translateY(28px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje .capa--lejana{transition-delay:.2s}
+.footer__paisaje .capa--cercana{transition-delay:.45s}
+.footer.en-vista .capa{opacity:1;transform:none}
+.footer__firma{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,3vw,32px);letter-spacing:.12em;line-height:1;margin-bottom:16px;
+}
+.footer__handles{
+  display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;
+}
+.footer__handles a{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--negro);
+  border-bottom:2px solid var(--negro);padding-bottom:2px;
+  transition:color var(--t),border-color var(--t);
+}
+.footer__handles a:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+.footer__linea{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-indent:.32em;
+  text-transform:uppercase;color:var(--tinta-suave);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (min-width:720px){
+  .wrap{padding-left:40px;padding-right:40px}
+  .pilar__paneles{grid-template-columns:1fr 1fr}
+}
+@media (min-width:1200px){
+  .wrap{padding-left:48px;padding-right:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+<style>
+/* Descargo global: opiniones, no asesoría de inversión (ver aviso-legal.html) */
+.footer__descargo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--tinta-suave);max-width:64ch;margin:0 auto 16px}
+.footer__descargo a{text-decoration:underline}
+.footer__identidad{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:16px}
+</style>
+<style>
+/* ── Nav v2: menú desplegable global (desktop + móvil) ── */
+.nav__der{display:flex;align-items:center;gap:16px}
+.nav__menu-btn{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copo);background:none;border:1px solid var(--linea);
+  padding:8px 16px;cursor:pointer;transition:border-color var(--t),color var(--t);
+}
+.nav__menu-btn:hover{border-color:var(--niebla)}
+.nav__menu-btn[aria-expanded="true"]{color:var(--acento);border-color:var(--acento)}
+.menu-global{
+  position:fixed;top:56px;left:0;right:0;z-index:9;
+  background:var(--negro);border-bottom:1px solid var(--linea);
+  display:grid;gap:0;padding:16px 24px 24px;
+}
+.menu-global a{
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);padding:14px 8px;
+  border-bottom:1px solid var(--linea);transition:color var(--t);
+}
+.menu-global a:last-child{border-bottom:none}
+.menu-global a:hover{color:var(--copo)}
+.menu-global a[aria-current="page"]{color:var(--acento)}
+.menu-global[hidden]{display:none}
+@media (min-width:900px){.menu-global{grid-template-columns:repeat(3,1fr);gap:0 48px;padding:24px 48px 32px}}
+</style>
+<style>
+/* Preview del sistema (cards mínimas) */
+.preview-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+.prevcard{border:1px solid var(--linea-luz);padding:32px 24px;background:var(--blanco)}
+.prevcard__num{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--tinta-suave);display:block;margin-bottom:24px}
+.prevcard__linea{width:40px;height:2px;margin-bottom:24px}
+.prevcard__nombre{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(32px,3.6vw,44px);line-height:1;letter-spacing:.04em;color:var(--negro)}
+.prevcard__desc{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-suave);margin:8px 0 16px}
+.prevcard__mantra{font-size:16px;color:var(--tinta-suave)}
+.preview-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:48px}
+@media (min-width:720px){.preview-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1200px){.preview-grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+<style>
+/* ── Ports Cult UI aprobados (2026-08-17): grain global + menú animado ── */
+/* texture-overlay → grain estático de película, canon "fine grain" */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+/* family-drawer → despliegue del menú con stagger */
+@media (prefers-reduced-motion:no-preference){
+  .menu-global:not([hidden]){animation:menuDown .28s cubic-bezier(.22,.6,.2,1)}
+  .menu-global:not([hidden]) a{animation:menuItem .35s cubic-bezier(.22,.6,.2,1) backwards}
+  .menu-global a:nth-child(1){animation-delay:.03s}
+  .menu-global a:nth-child(2){animation-delay:.06s}
+  .menu-global a:nth-child(3){animation-delay:.09s}
+  .menu-global a:nth-child(4){animation-delay:.12s}
+  .menu-global a:nth-child(5){animation-delay:.15s}
+  .menu-global a:nth-child(6){animation-delay:.18s}
+  @keyframes menuDown{from{opacity:0;transform:translateY(-8px)}}
+  @keyframes menuItem{from{opacity:0;transform:translateY(-6px)}}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV (global — copiada del canon) ════════ -->
+<nav class="nav" aria-label="Principal">
+  <a class="nav__marca" href="index.html">
+    <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="nav__wordmark">GSNOW<span>888</span></span>
+  </a>
+  <div class="nav__der">
+    <a class="nav__cta" href="https://www.youtube.com/@Cuatro4tros/live" target="_blank" rel="noopener">Ver en vivo</a>
+    <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="menu-global">Menú</button>
+  </div>
+</nav>
+<div class="menu-global" id="menu-global" hidden>
+  <a href="index.html">Inicio</a>
+  <a href="directos.html">Directos</a>
+  <a href="pilares.html" aria-current="page">El sistema</a>
+  <a href="historia.html">Quién soy</a>
+  <a href="letter.html">Letter</a>
+  <a href="curso.html">Curso</a>
+</div>
+
+<!-- ════════ HERO COMPACTO (negro, sin nieve) ════════ -->
+<header class="hero" id="inicio">
+  <div class="hero__inner">
+    <div class="hero__simbolo" role="img" aria-label="Símbolo GSNOW888: montaña de cuatro picos con final de línea de tendencia">
+      <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="eyebrow">El sistema · Cuatro pilares</p>
+    <h1 class="hero__frase">GSNOW<em>888</em> es quien streamea; CUATRO4TROS es el sistema que vive y enseña.</h1>
+    <p class="hero__linea">Cuerpo · Mente · Alma · Dinero</p>
+    <p class="hero__lead">Cuatro picos, una sola subida. Cada pilar tiene su azul, su mantra, su serie en vivo y su 1% de hoy. Esto no es teoría: es lo que se ve en cámara.</p>
+  </div>
+</header>
+
+<main>
+<!-- ════════ PREVIEW DEL SISTEMA (bloqueado por decisión del usuario 2026-08-17:
+     el contenido completo NO se publica hasta nueva orden — solo el mapa de pilares.
+     El contenido profundo anterior vive en git si se quiere recuperar. ════════ -->
+<section class="sec sec--light" aria-labelledby="t-preview">
+  <div class="wrap">
+    <p class="eyebrow">Preview · El sistema completo se abre pronto</p>
+    <h2 class="titulo" id="t-preview">Cuatro picos. Una sola subida.</h2>
+    <p class="lead">El sistema ordena mi vida completa en cuatro pilares. Todavía lo estoy puliendo para contarlo como se merece — cuando esté listo, se abre aquí. Por ahora, este es el mapa:</p>
+
+    <div class="preview-grid">
+      <article class="prevcard">
+        <span class="prevcard__num">01</span>
+        <div class="prevcard__linea" style="background:var(--p-cuerpo)" aria-hidden="true"></div>
+        <h3 class="prevcard__nombre">Cuerpo</h3>
+        <p class="prevcard__desc">Lifestyle</p>
+        <p class="prevcard__mantra">1% más fuerte. Cada rep cuenta.</p>
+      </article>
+      <article class="prevcard">
+        <span class="prevcard__num">02</span>
+        <div class="prevcard__linea" style="background:var(--p-mente)" aria-hidden="true"></div>
+        <h3 class="prevcard__nombre">Mente</h3>
+        <p class="prevcard__desc">Filosofía</p>
+        <p class="prevcard__mantra">1% más claro. Cada idea cuenta.</p>
+      </article>
+      <article class="prevcard">
+        <span class="prevcard__num">03</span>
+        <div class="prevcard__linea" style="background:var(--p-alma)" aria-hidden="true"></div>
+        <h3 class="prevcard__nombre">Alma</h3>
+        <p class="prevcard__desc">Espiritualidad</p>
+        <p class="prevcard__mantra">1% más en paz. Cada momento cuenta.</p>
+      </article>
+      <article class="prevcard">
+        <span class="prevcard__num">04</span>
+        <div class="prevcard__linea" style="background:var(--p-dinero)" aria-hidden="true"></div>
+        <h3 class="prevcard__nombre">Dinero</h3>
+        <p class="prevcard__desc">Finanzas · Mercados</p>
+        <p class="prevcard__mantra">1% más libre. Cada peso cuenta.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--dark" aria-labelledby="t-aviso-preview">
+  <div class="wrap">
+    <p class="eyebrow">Mientras tanto</p>
+    <h2 class="titulo" id="t-aviso-preview">Los de la Letter entran primero.</h2>
+    <p class="lead">Cuando el sistema se abra, el aviso llega por correo antes que a ningún otro lado. Mientras, la subida sigue en los directos.</p>
+    <div class="preview-cta">
+      <a class="btn btn--acento" href="letter.html">Unirme a la Letter</a>
+      <a class="btn" href="directos.html">Ver los directos</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ════════ FOOTER (blanco — efecto montaña, canon del index) ════════ -->
+<footer class="footer" id="canales">
+  <div class="footer__paisaje" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="capa capa--lejana" fill="rgba(7,9,12,.05)" d="M0,200 L0,120 L140,60 L260,110 L420,40 L560,100 L720,24 L880,90 L1040,50 L1200,110 L1320,70 L1440,130 L1440,200 Z"/>
+      <path class="capa capa--cercana" fill="rgba(7,9,12,.09)" d="M0,200 L0,150 L180,90 L340,140 L520,70 L700,130 L900,50 L1080,120 L1260,80 L1440,140 L1440,200 Z"/>
+    </svg>
+  </div>
+  <svg class="logo" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- wordmark monocromo: el 888 solo lleva azul sobre fondos oscuros (regla canónica) -->
+  <p class="footer__firma">GSNOW888 — 1% cada día</p>
+  <p class="footer__identidad">GSNOW888 es Gregorio Sánchez Calderón.</p>
+  <div class="footer__handles">
+    <a href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://kick.com/gsnow888" target="_blank" rel="noopener">Kick</a>
+    <a href="https://www.instagram.com/gsnow888" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/gregorio-s%C3%A1nchez-calder%C3%B3n-6ba82128a/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="historia.html#perfil">Perfil</a>
+    <a href="privacidad.html">Privacidad</a>
+    <a href="aviso-legal.html">Aviso legal</a>
+  </div>
+  <p class="footer__descargo">Todo lo publicado aquí son opiniones personales con fines educativos. No es asesoría de inversión. <a href="aviso-legal.html">Aviso legal</a></p>
+  <p class="footer__linea">Cuerpo · Mente · Alma · Dinero</p>
+</footer>
+
+<script>
+/* Efecto montaña del cierre: el trazo del logo se dibuja pico a pico y el
+   paisaje emerge, al entrar el footer en vista. Con prefers-reduced-motion
+   se muestra el estado final sin animación. */
+(function(){
+  var footer=document.querySelector('.footer');if(!footer)return;
+  var poly=footer.querySelector('svg.logo polyline');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(poly&&!reduce){
+    var L=poly.getTotalLength();
+    poly.style.strokeDasharray=L;
+    poly.style.strokeDashoffset=L;
+  }
+  function activar(){
+    footer.classList.add('en-vista');
+    if(poly&&!reduce)poly.style.strokeDashoffset='0';
+  }
+  if(reduce||!('IntersectionObserver' in window)){activar();return}
+  var io=new IntersectionObserver(function(es){
+    if(es[0].isIntersecting){activar();io.disconnect()}
+  },{threshold:.3});
+  io.observe(footer);
+})();
+</script>
+<script>
+/* Menú desplegable global */
+(function(){
+  var btn=document.querySelector('.nav__menu-btn'),menu=document.getElementById('menu-global');
+  if(!btn||!menu)return;
+  function cerrar(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(){
+    var abierto=!menu.hidden;
+    menu.hidden=abierto;btn.setAttribute('aria-expanded',String(!abierto));
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+  document.addEventListener('click',function(e){
+    if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))cerrar();
+  });
+})();
+</script>
+</body>
+</html>

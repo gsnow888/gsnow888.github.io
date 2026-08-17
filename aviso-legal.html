@@ -1,0 +1,308 @@
+<!--
+  CUATRO4TROS × GSNOW888 — AVISO LEGAL Y DESCARGO DE RESPONSABILIDAD (aviso-legal.html)
+  BORRADOR INFORMADO, NO CONSEJO LEGAL: [CONFIRMAR con un abogado antes de publicar].
+  Base: la asesoría de inversiones en México es actividad regulada (Ley del Mercado de
+  Valores; Asesores en Inversiones registrados ante la CNBV) — este sitio se deslinda
+  explícitamente: opiniones personales con fines educativos, sin recomendaciones.
+  Derivado de AVISO DE PRIVACIDAD (privacidad.html)
+  Un solo archivo, CSS inline. Única dependencia externa: Google Fonts.
+  Página sobria negra de una columna (texto max-width 720px) para la Cuatro4tros Letter.
+  Footer SIMPLE (sin efecto montaña): wordmark monocromo pequeño + línea del sistema.
+  Tokens, nav y patrones copiados del canon: web/index.html.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aviso legal — CUATRO4TROS · GSNOW888</title>
+<meta name="description" content="Aviso legal de CUATRO4TROS: todo el contenido son opiniones personales con fines educativos. No es asesoría de inversión ni recomendación de ningún tipo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 48'><polyline points='4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2' fill='none' stroke='%235FC8F5' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET + TOKENS (canon GSNOW888 × CUATRO4TROS) ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --negro:#07090C;
+  --carbon:#0E1216;
+  --blanco:#F4F8FB;
+  --copo:#FFFFFF;
+  --niebla:#9FB3BF;                   /* solo sobre fondos oscuros */
+  --linea:rgba(159,179,191,.18);      /* hairlines sobre oscuro */
+  --linea-luz:rgba(14,18,22,.14);     /* hairlines sobre claro */
+  --tinta-suave:rgba(7,9,12,.62);     /* texto secundario sobre claro (AA) */
+  --p-cuerpo:#A9DFF7;
+  --p-mente:#5FC8F5;
+  --p-alma:#2E9BD6;
+  --p-dinero:#14648F;                 /* NUNCA como color de texto */
+  --acento:#5FC8F5;
+  --t:240ms cubic-bezier(.25,.6,.35,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;
+  background:var(--negro);color:var(--blanco);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.sec--light a:focus-visible,.sec--light button:focus-visible{outline-color:var(--negro)}  /* el acento no pasa 3:1 sobre claro */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+.sec{padding-top:clamp(88px,11vw,144px);padding-bottom:clamp(88px,11vw,144px)}
+.sec--dark{background:var(--negro);color:var(--blanco)}
+.sec--light{background:var(--blanco);color:var(--negro)}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--niebla);margin-bottom:24px;
+}
+.titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:.02em;
+  margin-bottom:24px;max-width:18ch;
+}
+.lead{font-size:clamp(17px,2vw,20px);max-width:62ch;color:var(--niebla)}
+
+/* ============ NAV (canon) ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:10;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:var(--negro);border-bottom:1px solid var(--linea);
+}
+.nav__marca{display:flex;align-items:center;gap:16px;color:var(--blanco)}
+.nav__marca svg{width:40px;height:16px;flex:none}
+.nav__wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;letter-spacing:.12em}
+.nav__wordmark span{color:var(--acento)}
+.nav__links{display:none;align-items:center;gap:32px}
+.nav__links a{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);transition:color var(--t);
+}
+.nav__links a:hover{color:var(--copo)}
+.nav__cta{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acento);
+  border:1px solid var(--acento);padding:8px 16px;
+  transition:background var(--t),color var(--t);
+}
+.nav__cta:hover{background:var(--acento);color:var(--negro)}
+@media (min-width:900px){.nav__links{display:flex}}
+
+/* ============ AVISO (una columna, 720px) ============ */
+.legal{padding-top:calc(56px + clamp(64px,9vw,120px));padding-bottom:clamp(88px,11vw,144px)}
+.legal__wrap{max-width:720px;margin:0 auto;padding-left:24px;padding-right:24px}
+.legal__fecha{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);margin-top:24px;
+}
+.bloque{border-top:1px solid var(--linea);margin-top:56px;padding-top:48px}
+.bloque__num{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--niebla);margin-bottom:16px;
+}
+.bloque__titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(26px,3.4vw,36px);line-height:1.05;letter-spacing:.02em;
+  color:var(--copo);margin-bottom:16px;
+}
+.bloque p{color:var(--niebla);max-width:62ch}
+.bloque p + p{margin-top:16px}
+.bloque strong{color:var(--blanco);font-weight:700}
+.bloque ul{list-style:none;margin-top:16px}
+.bloque li{
+  color:var(--niebla);padding:8px 0 8px 24px;position:relative;max-width:60ch;
+}
+.bloque li::before{
+  content:"—";position:absolute;left:0;color:var(--acento);
+  font-family:'Space Mono',monospace;
+}
+.legal a.enlace{
+  color:var(--blanco);border-bottom:1px solid var(--niebla);
+  transition:color var(--t),border-color var(--t);
+}
+.legal a.enlace:hover{color:var(--copo);border-color:var(--copo)}
+
+/* ============ FOOTER SIMPLE (sin efecto montaña) ============ */
+.footer-simple{
+  border-top:1px solid var(--linea);
+  padding:64px 24px;text-align:center;
+  background:var(--negro);color:var(--blanco);
+}
+/* wordmark monocromo: el 888 va blanco aquí a propósito — footer sobrio, sin acento */
+.footer-simple__wordmark{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:24px;line-height:1;letter-spacing:.12em;margin-bottom:16px;
+}
+.footer-simple__linea{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-indent:.32em;
+  text-transform:uppercase;color:var(--niebla);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (min-width:720px){
+  .legal__wrap{padding-left:40px;padding-right:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+<style>
+/* ── Nav v2: menú desplegable global (desktop + móvil) ── */
+.nav__der{display:flex;align-items:center;gap:16px}
+.nav__menu-btn{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copo);background:none;border:1px solid var(--linea);
+  padding:8px 16px;cursor:pointer;transition:border-color var(--t),color var(--t);
+}
+.nav__menu-btn:hover{border-color:var(--niebla)}
+.nav__menu-btn[aria-expanded="true"]{color:var(--acento);border-color:var(--acento)}
+.menu-global{
+  position:fixed;top:56px;left:0;right:0;z-index:9;
+  background:var(--negro);border-bottom:1px solid var(--linea);
+  display:grid;gap:0;padding:16px 24px 24px;
+}
+.menu-global a{
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);padding:14px 8px;
+  border-bottom:1px solid var(--linea);transition:color var(--t);
+}
+.menu-global a:last-child{border-bottom:none}
+.menu-global a:hover{color:var(--copo)}
+.menu-global a[aria-current="page"]{color:var(--acento)}
+.menu-global[hidden]{display:none}
+@media (min-width:900px){.menu-global{grid-template-columns:repeat(3,1fr);gap:0 48px;padding:24px 48px 32px}}
+</style>
+<style>
+/* ── Ports Cult UI aprobados (2026-08-17): grain global + menú animado ── */
+/* texture-overlay → grain estático de película, canon "fine grain" */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+/* family-drawer → despliegue del menú con stagger */
+@media (prefers-reduced-motion:no-preference){
+  .menu-global:not([hidden]){animation:menuDown .28s cubic-bezier(.22,.6,.2,1)}
+  .menu-global:not([hidden]) a{animation:menuItem .35s cubic-bezier(.22,.6,.2,1) backwards}
+  .menu-global a:nth-child(1){animation-delay:.03s}
+  .menu-global a:nth-child(2){animation-delay:.06s}
+  .menu-global a:nth-child(3){animation-delay:.09s}
+  .menu-global a:nth-child(4){animation-delay:.12s}
+  .menu-global a:nth-child(5){animation-delay:.15s}
+  .menu-global a:nth-child(6){animation-delay:.18s}
+  @keyframes menuDown{from{opacity:0;transform:translateY(-8px)}}
+  @keyframes menuItem{from{opacity:0;transform:translateY(-6px)}}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV (global, canon) ════════ -->
+<nav class="nav" aria-label="Principal">
+  <a class="nav__marca" href="index.html">
+    <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="nav__wordmark">GSNOW<span>888</span></span>
+  </a>
+  <div class="nav__der">
+    <a class="nav__cta" href="https://www.youtube.com/@Cuatro4tros/live" target="_blank" rel="noopener">Ver en vivo</a>
+    <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="menu-global">Menú</button>
+  </div>
+</nav>
+<div class="menu-global" id="menu-global" hidden>
+  <a href="index.html">Inicio</a>
+  <a href="directos.html">Directos</a>
+  <a href="pilares.html">El sistema</a>
+  <a href="historia.html">Quién soy</a>
+  <a href="letter.html">Letter</a>
+  <a href="curso.html">Curso</a>
+</div>
+
+<!-- ════════ AVISO DE PRIVACIDAD ════════ -->
+<main class="legal">
+  <div class="legal__wrap">
+    <header>
+      <p class="eyebrow">Legal · Todo el contenido</p>
+      <h1 class="titulo">Aviso legal.</h1>
+      <p class="lead">Antes de ver un directo o leer una opinión, esto es lo que este sitio es — y sobre todo, lo que no es. Sin letra pequeña: la letra es esta.</p>
+      <p class="legal__fecha">Última actualización · 14 de agosto de 2026</p>
+    </header>
+
+    <section class="bloque">
+      <p class="bloque__num">01 · Qué es este contenido</p>
+      <h2 class="bloque__titulo">Opiniones personales. Nada más.</h2>
+      <p>Todo lo que aparece en este sitio, en los directos, videos, la Cuatro4tros Letter y las redes asociadas — incluyendo lo que digo sobre mercados, trading, hábitos y cualquier otro tema — son <strong>opiniones personales de Gregorio Sánchez Calderón (GSNOW888)</strong>, publicadas con fines exclusivamente educativos, informativos y de entretenimiento.</p>
+      <p>Comparto mi proceso en cámara, con mis aciertos y mis errores. Eso es documentar, no recomendar.</p>
+    </section>
+
+    <section class="bloque">
+      <p class="bloque__num">02 · No es asesoría de inversión</p>
+      <h2 class="bloque__titulo">Ninguna palabra de este sitio es una recomendación.</h2>
+      <p><strong>Nada de lo publicado constituye asesoría de inversión, recomendación personalizada, sugerencia de estrategia, ni oferta o invitación para comprar o vender valores, futuros, divisas ni ningún otro instrumento financiero.</strong></p>
+      <p><strong>No soy asesor en inversiones registrado ante la Comisión Nacional Bancaria y de Valores (CNBV).</strong> En México, la asesoría de inversiones es una actividad regulada por la Ley del Mercado de Valores y reservada a asesores registrados. Si necesitas orientación para invertir, acude a un asesor en inversiones registrado ante la CNBV o a una entidad financiera autorizada.</p>
+      <p>Cuando opino sobre un mercado, un instrumento o una operación, describo lo que yo pienso y lo que yo hago con mi propio dinero — no lo que tú deberías hacer con el tuyo.</p>
+    </section>
+
+    <section class="bloque">
+      <p class="bloque__num">03 · El riesgo es real</p>
+      <h2 class="bloque__titulo">Operar puede costarte más de lo que depositaste.</h2>
+      <ul>
+        <li><strong>Los futuros y derivados usan apalancamiento:</strong> las pérdidas pueden superar tu depósito inicial. Es un instrumento de alto riesgo que no es adecuado para cualquier persona.</li>
+        <li><strong>Los rendimientos pasados no garantizan rendimientos futuros.</strong> Ni los míos, ni los de nadie.</li>
+        <li><strong>Lo que muestro en cámara es mi operativa personal</strong>, con mi capital y mi contexto. Replicarla sin tu propio análisis y tu propia gestión de riesgo es una mala idea — y lo digo yo.</li>
+      </ul>
+    </section>
+
+    <section class="bloque">
+      <p class="bloque__num">04 · Tu decisión, tu responsabilidad</p>
+      <h2 class="bloque__titulo">Las decisiones que tomes son tuyas.</h2>
+      <p>Cualquier decisión financiera, de inversión, de salud o de cualquier otro tipo que tomes con base en este contenido es <strong>exclusivamente tu responsabilidad</strong>. En la máxima medida permitida por la ley aplicable, no asumo responsabilidad por pérdidas o daños derivados del uso de la información publicada aquí.</p>
+      <p>La regla de la casa aplica también para ti: el plan se escribe antes de abrir la posición, y la pérdida máxima se define primero.</p>
+    </section>
+
+    <section class="bloque">
+      <p class="bloque__num">05 · Propiedad intelectual</p>
+      <h2 class="bloque__titulo">El contenido tiene dueño.</h2>
+      <p>El contenido, la marca CUATRO4TROS, el personaje GSNOW888, el símbolo de la montaña y los textos de este sitio son propiedad de su titular. Puedes citar con atribución y enlace; el uso comercial requiere permiso por escrito.</p>
+    </section>
+
+    <section class="bloque">
+      <p class="bloque__num">06 · Privacidad y contacto</p>
+      <h2 class="bloque__titulo">Lo demás, por escrito.</h2>
+      <p>El tratamiento de tu correo en la Cuatro4tros Letter está descrito en el <a class="enlace" href="privacidad.html">aviso de privacidad</a>.</p>
+      <!-- CONFIRMAR: correo de contacto público antes de publicar -->
+      <p>Dudas sobre este aviso: <strong>contacto@gsnow888.com</strong>.</p>
+      <p>Este aviso puede actualizarse; la fecha de arriba siempre dice cuándo fue la última vez.</p>
+    </section>
+  </div>
+</main>
+
+<!-- ════════ FOOTER SIMPLE (sin efecto montaña) ════════ -->
+<footer class="footer-simple">
+  <p class="footer-simple__linea" style="margin-bottom:16px;letter-spacing:.16em;text-indent:0">GSNOW888 es Gregorio Sánchez Calderón</p>
+  <p class="footer-simple__wordmark">GSNOW888</p>
+  <p class="footer-simple__linea">Cuerpo · Mente · Alma · Dinero</p>
+</footer>
+
+<script>
+/* Menú desplegable global */
+(function(){
+  var btn=document.querySelector('.nav__menu-btn'),menu=document.getElementById('menu-global');
+  if(!btn||!menu)return;
+  function cerrar(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(){
+    var abierto=!menu.hidden;
+    menu.hidden=abierto;btn.setAttribute('aria-expanded',String(!abierto));
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+  document.addEventListener('click',function(e){
+    if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))cerrar();
+  });
+})();
+</script>
+</body>
+</html>

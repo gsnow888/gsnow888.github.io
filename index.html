@@ -1,0 +1,854 @@
+<!--
+  CUATRO4TROS × GSNOW888 — LANDING FINAL (index.html — lista para gsnow888.com)
+  Un solo archivo, CSS y JS inline. Única dependencia externa: Google Fonts.
+  Secciones: Hero (negro, nieve) → Directos (blanco, videos REALES del canal) → Newsletter
+  (negro, Cuatro4tros Letter con formulario) → Tips (blanco) → La semana (negro) → Footer
+  (blanco, efecto montaña: trazo que se dibuja + paisaje).
+  Canal real: youtube.com/@Cuatro4tros. Directos automáticos: web/videos-endpoint/ (pegar
+  VIDEOS_URL al final). Newsletter: backend/Code.gs (pegar WEBAPP_URL). Kick: handle POR CONFIRMAR.
+  Placeholders restantes: chip de próximo directo, ediciones de la Letter y horario semanal.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUATRO4TROS — GSNOW888 · La montaña se sube en vivo</title>
+<meta name="description" content="El canal de Gregorio Sánchez Calderón — GSNOW888: streams en vivo de lifestyle, filosofía, espiritualidad y trading, newsletter semanal y la historia del sistema CUERPO · MENTE · ALMA · DINERO. 1% cada día.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 48'><polyline points='4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2' fill='none' stroke='%235FC8F5' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<!-- Open Graph: las URLs absolutas funcionan tras el deploy en gsnow888.com -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CUATRO4TROS — GSNOW888 · La montaña se sube en vivo">
+<meta property="og:description" content="Streams en vivo de lifestyle, filosofía, espiritualidad y trading. 1% cada día.">
+<meta property="og:image" content="https://gsnow888.com/fotos/nb-trading.jpg">
+<meta property="og:url" content="https://gsnow888.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET + TOKENS (canon GSNOW888 × CUATRO4TROS) ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --negro:#07090C;
+  --carbon:#0E1216;
+  --blanco:#F4F8FB;
+  --copo:#FFFFFF;
+  --niebla:#9FB3BF;                   /* solo sobre fondos oscuros */
+  --linea:rgba(159,179,191,.18);      /* hairlines sobre oscuro */
+  --linea-luz:rgba(14,18,22,.14);     /* hairlines sobre claro */
+  --tinta-suave:rgba(7,9,12,.62);     /* texto secundario sobre claro (AA) */
+  --p-cuerpo:#A9DFF7;
+  --p-mente:#5FC8F5;
+  --p-alma:#2E9BD6;
+  --p-dinero:#14648F;                 /* NUNCA como color de texto */
+  --acento:#5FC8F5;
+  --t:240ms cubic-bezier(.25,.6,.35,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;
+  background:var(--negro);color:var(--blanco);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.sec--light a:focus-visible,.sec--light button:focus-visible,.footer a:focus-visible{outline-color:var(--negro)}  /* el acento no pasa 3:1 sobre claro */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+.sec{padding-top:clamp(88px,11vw,144px);padding-bottom:clamp(88px,11vw,144px)}
+.sec--dark{background:var(--negro);color:var(--blanco)}
+.sec--light{background:var(--blanco);color:var(--negro)}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--niebla);margin-bottom:24px;
+}
+.sec--light .eyebrow{color:var(--tinta-suave)}
+.titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:.02em;
+  margin-bottom:24px;max-width:18ch;
+}
+.lead{font-size:clamp(17px,2vw,20px);max-width:62ch;color:var(--niebla)}
+.sec--light .lead{color:var(--tinta-suave)}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:10;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:var(--negro);border-bottom:1px solid var(--linea);
+}
+.nav__marca{display:flex;align-items:center;gap:16px;color:var(--blanco)}
+.nav__marca svg{width:40px;height:16px;flex:none}
+.nav__wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;letter-spacing:.12em}
+.nav__wordmark span{color:var(--acento)}
+.nav__links{display:none;align-items:center;gap:32px}
+.nav__links a{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);transition:color var(--t);
+}
+.nav__links a:hover{color:var(--copo)}
+.nav__cta{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acento);
+  border:1px solid var(--acento);padding:8px 16px;
+  transition:background var(--t),color var(--t);
+}
+.nav__cta:hover{background:var(--acento);color:var(--negro)}
+@media (min-width:900px){.nav__links{display:flex}}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+  background:var(--negro);padding:120px 24px 96px;
+}
+/* Video de fondo del hero (Veo 3.1): carga condicional vía JS — el poster siempre está */
+.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__velo{position:absolute;inset:0;background:rgba(7,9,12,.62)}  /* scrim = tinta-suave ratificado: AA del texto sobre el video */
+canvas.nieve{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero__inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.hero__simbolo{color:var(--blanco);margin-bottom:40px}
+.hero__simbolo svg{width:clamp(88px,12vw,140px);height:auto}
+.hero .eyebrow{margin-bottom:16px}
+.wordmark{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(68px,16vw,208px);line-height:.95;letter-spacing:.12em;
+  margin-right:-.12em;color:var(--copo);
+}
+.wordmark span{color:var(--acento)}
+.hero__nombre-real{
+  font-family:'Space Mono',monospace;font-size:clamp(12px,1.6vw,15px);
+  letter-spacing:.24em;text-transform:uppercase;color:var(--blanco);
+  margin-top:24px;margin-right:-.24em;
+}
+.hero__linea{
+  font-family:'Space Mono',monospace;font-size:clamp(12px,1.6vw,16px);
+  letter-spacing:.32em;text-transform:uppercase;color:var(--niebla);
+  margin-top:24px;margin-right:-.32em;
+}
+.hero__lead{margin:32px auto 0;max-width:52ch;color:var(--niebla);font-size:clamp(16px,1.9vw,19px)}
+.hero__ctas{display:flex;gap:16px;margin-top:48px;flex-wrap:wrap;justify-content:center}
+.hero__historia{
+  display:flex;flex-direction:column;gap:8px;align-items:center;
+  margin-top:32px;padding:20px 40px;
+  border:1px solid var(--linea);background:rgba(7,9,12,.35);
+  transition:border-color var(--t),background var(--t),transform var(--t);
+}
+.hero__historia:hover{border-color:var(--acento);background:rgba(7,9,12,.6);transform:translateY(-3px)}
+.hero__historia-kicker{
+  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--acento);
+}
+.hero__historia-titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(22px,2.6vw,32px);line-height:1;letter-spacing:.06em;color:var(--copo);
+}
+.hero__historia-flecha{display:inline-block;transition:transform var(--t);color:var(--acento)}
+.hero__historia:hover .hero__historia-flecha{transform:translateX(6px)}
+.btn{
+  display:inline-block;font-family:'Space Mono',monospace;
+  font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:16px 32px;border:1px solid var(--copo);color:var(--copo);
+  transition:background var(--t),color var(--t),border-color var(--t);
+}
+.btn:hover{background:var(--copo);color:var(--negro)}
+.btn--acento{background:var(--acento);border-color:var(--acento);color:var(--negro)}  /* primario relleno: un solo CTA domina */
+.btn--acento:hover{background:transparent;color:var(--acento)}
+.hero__proximo{
+  margin-top:48px;display:inline-flex;align-items:center;gap:8px;
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);
+  border:1px solid var(--linea);padding:8px 16px;
+}
+.hero__proximo .punto{width:8px;height:8px;border-radius:50%;background:var(--acento);flex:none}
+
+/* ============ 01 DIRECTOS ============ */
+.directos{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+.directo{
+  --p:var(--acento);
+  border:1px solid var(--linea-luz);background:var(--blanco);
+  transition:transform var(--t),border-color var(--t);
+}
+.directo:hover{transform:translateY(-4px);border-color:var(--p)}
+.directo--cuerpo{--p:var(--p-cuerpo)}
+.directo--mente{--p:var(--p-mente)}
+.directo--alma{--p:var(--p-alma)}
+.directo--dinero{--p:var(--p-dinero)}
+/* Miniatura del VOD: thumbnail real de YouTube (contenido real — excepción ratificada) */
+.directo__thumb{position:relative;aspect-ratio:16/9;background:var(--negro);overflow:hidden}
+.directo__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.directo__linea{height:2px;background:var(--p)}
+.directo__cuerpo{padding:24px}
+.directo__meta{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tinta-suave);display:flex;gap:8px;flex-wrap:wrap;
+}
+.directo__titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(24px,2.4vw,30px);
+  line-height:1.05;letter-spacing:.02em;color:var(--negro);margin-top:16px;
+}
+.ver-todo{
+  display:inline-block;margin-top:48px;
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--negro);border-bottom:2px solid var(--negro);
+  padding-bottom:4px;transition:color var(--t),border-color var(--t);
+}
+.ver-todo:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+.ver-todo--dark{color:var(--copo);border-color:var(--copo)}
+.ver-todo--dark:hover{color:var(--niebla);border-color:var(--niebla)}
+
+/* ── Newsletter (Cuatro4tros Letter) ── */
+.news-form{display:flex;gap:16px;flex-wrap:wrap;margin-top:48px;max-width:560px}
+.news-form__input{
+  flex:1;min-width:240px;
+  font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.04em;
+  color:var(--copo);background:transparent;
+  border:1px solid var(--linea);padding:16px;
+  transition:border-color var(--t);
+}
+.news-form__input::placeholder{color:var(--niebla)}
+.news-form__input:focus{border-color:var(--acento);outline:none}
+.news-form__nota{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;
+  color:var(--niebla);margin-top:16px;
+}
+.news-ediciones__label{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--niebla);
+  margin-top:80px;
+}
+
+/* ============ 02 BITÁCORA ============ */
+.entradas{border-top:1px solid var(--linea);margin-top:56px}
+.entrada{
+  --p:var(--acento);
+  display:grid;grid-template-columns:1fr;gap:16px;
+  padding:32px 16px;border-bottom:1px solid var(--linea);
+  transition:background var(--t);
+}
+.entrada:hover{background:var(--carbon)}
+.entrada--mente{--p:var(--p-mente)}
+.entrada--alma{--p:var(--p-alma)}
+.entrada--dinero{--p:var(--p-dinero)}
+.entrada__pilar{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--niebla);
+  display:flex;align-items:center;gap:8px;
+}
+.entrada__pilar::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--p);flex:none}
+.entrada__titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(28px,3.6vw,44px);line-height:1.05;letter-spacing:.02em;color:var(--copo);
+}
+.entrada__extracto{color:var(--niebla);max-width:56ch}
+.entrada__leer{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blanco);
+}
+
+/* ============ 03 TIPS ============ */
+.tips{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+.tip{
+  --p:var(--acento);
+  border:1px solid var(--linea-luz);padding:32px 24px;background:var(--blanco);
+  transition:transform var(--t),border-color var(--t);
+}
+.tip:hover{transform:translateY(-4px);border-color:var(--p)}
+.tip--cuerpo{--p:var(--p-cuerpo)}
+.tip--mente{--p:var(--p-mente)}
+.tip--alma{--p:var(--p-alma)}
+.tip--dinero{--p:var(--p-dinero)}
+.tip__pilar{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tinta-suave);
+  display:flex;align-items:center;gap:8px;margin-bottom:24px;
+}
+.tip__pilar::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--p);flex:none;box-shadow:inset 0 0 0 1px var(--linea-luz)}  /* anillo: los azules pálidos no se pierden sobre blanco */
+.tip__verdad{
+  font-size:clamp(17px,2vw,21px);font-weight:700;line-height:1.45;
+  color:var(--negro);margin-bottom:24px;max-width:34ch;
+}
+.tip__accion{
+  font-family:'Space Mono',monospace;font-size:13px;line-height:1.7;
+  color:var(--negro);letter-spacing:.02em;
+}
+
+/* ============ 04 LA SEMANA ============ */
+.semana{border-top:1px solid var(--linea);margin-top:56px}
+.dia{
+  --p:var(--acento);
+  display:grid;grid-template-columns:1fr;gap:8px;
+  padding:32px 16px;border-bottom:1px solid var(--linea);
+}
+/* sin hover: las filas de horario no son interactivas — nada de falsas affordances */
+.dia--cuerpo{--p:var(--p-cuerpo)}
+.dia--mente{--p:var(--p-mente)}
+.dia--alma{--p:var(--p-alma)}
+.dia--dinero{--p:var(--p-dinero)}
+.dia__pilar{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--niebla);
+  display:flex;align-items:center;gap:8px;
+}
+.dia__pilar::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--p);flex:none}
+.dia__serie{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(28px,3.2vw,40px);line-height:1;letter-spacing:.04em;color:var(--copo);
+}
+.dia__cadencia{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blanco);
+}
+.semana__cta{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap}
+
+/* ============ FOOTER (efecto montaña) ============ */
+.footer{
+  position:relative;overflow:hidden;
+  background:var(--blanco);color:var(--negro);
+  padding:96px 24px 176px;text-align:center;
+}
+.footer > :not(.footer__paisaje){position:relative;z-index:1}
+.footer svg.logo{width:96px;height:auto;margin:0 auto 24px;color:var(--negro)}
+.footer svg.logo polyline{transition:stroke-dashoffset 2.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje{position:absolute;left:0;right:0;bottom:0;pointer-events:none}
+.footer__paisaje svg{display:block;width:100%;height:clamp(80px,12vw,170px)}
+.footer__paisaje .capa{opacity:0;transform:translateY(28px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje .capa--lejana{transition-delay:.2s}
+.footer__paisaje .capa--cercana{transition-delay:.45s}
+.footer.en-vista .capa{opacity:1;transform:none}
+.footer__firma{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,3vw,32px);letter-spacing:.12em;line-height:1;margin-bottom:16px;
+}
+.footer__handles{
+  display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;
+}
+.footer__handles a{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--negro);
+  border-bottom:2px solid var(--negro);padding-bottom:2px;
+  transition:color var(--t),border-color var(--t);
+}
+.footer__handles a:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+.footer__linea{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-indent:.32em;
+  text-transform:uppercase;color:var(--tinta-suave);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (min-width:720px){
+  .wrap{padding-left:40px;padding-right:40px}
+  .directos{grid-template-columns:repeat(2,1fr)}
+  .tips{grid-template-columns:repeat(2,1fr)}
+  .entrada{grid-template-columns:180px 1fr 140px;gap:32px;align-items:baseline;padding:40px 24px}
+  .entrada__titulo{grid-column:2}
+  .entrada__extracto{grid-column:2}
+  .entrada__pilar{grid-column:1;grid-row:1}
+  .entrada__leer{grid-column:3;grid-row:1;text-align:right}
+  .dia{grid-template-columns:180px 1fr 220px;gap:32px;align-items:baseline;padding:32px 24px}
+  .dia__serie{grid-column:2}
+  .dia__pilar{grid-column:1;grid-row:1}
+  .dia__cadencia{grid-column:3;grid-row:1;text-align:right}
+}
+@media (min-width:1200px){
+  .wrap{padding-left:48px;padding-right:48px}
+  .directos{grid-template-columns:repeat(4,1fr)}
+  .tips{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+<style>
+/* Descargo global: opiniones, no asesoría de inversión (ver aviso-legal.html) */
+.footer__descargo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--tinta-suave);max-width:64ch;margin:0 auto 16px}
+.footer__descargo a{text-decoration:underline}
+.footer__identidad{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:16px}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Gregorio Sánchez Calderón","alternateName":"GSNOW888","description":"Fundador de CUATRO4TROS. Streams en vivo de lifestyle, filosofía, espiritualidad y trading — GSNOW888 es su nombre en cámara.","url":"https://gsnow888.com/","jobTitle":"Founder de Nex Digital · Co-founder de Northpoint","alumniOf":{"@type":"CollegeOrUniversity","name":"Universidad Anáhuac Querétaro"},"sameAs":["https://www.youtube.com/@Cuatro4tros","https://www.instagram.com/gsnow888","https://www.linkedin.com/in/gregorio-s%C3%A1nchez-calder%C3%B3n-6ba82128a/"]}
+</script>
+<style>
+/* ── Nav v2: menú desplegable global (desktop + móvil) ── */
+.nav__der{display:flex;align-items:center;gap:16px}
+.nav__menu-btn{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copo);background:none;border:1px solid var(--linea);
+  padding:8px 16px;cursor:pointer;transition:border-color var(--t),color var(--t);
+}
+.nav__menu-btn:hover{border-color:var(--niebla)}
+.nav__menu-btn[aria-expanded="true"]{color:var(--acento);border-color:var(--acento)}
+.menu-global{
+  position:fixed;top:56px;left:0;right:0;z-index:9;
+  background:var(--negro);border-bottom:1px solid var(--linea);
+  display:grid;gap:0;padding:16px 24px 24px;
+}
+.menu-global a{
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);padding:14px 8px;
+  border-bottom:1px solid var(--linea);transition:color var(--t);
+}
+.menu-global a:last-child{border-bottom:none}
+.menu-global a:hover{color:var(--copo)}
+.menu-global a[aria-current="page"]{color:var(--acento)}
+.menu-global[hidden]{display:none}
+@media (min-width:900px){.menu-global{grid-template-columns:repeat(3,1fr);gap:0 48px;padding:24px 48px 32px}}
+</style>
+<style>
+/* Ediciones centradas con CTA (pedido 2026-08-17) */
+.entrada,.entrada.entrada--dinero,.entrada.entrada--mente,.entrada.entrada--alma{
+  grid-template-columns:1fr;justify-items:center;text-align:center;gap:16px;
+}
+.entrada__extracto{margin-left:auto;margin-right:auto}
+.entrada__leer{
+  border:1px solid var(--copo);padding:10px 20px;font-weight:700;
+  transition:background var(--t),color var(--t);
+}
+.entrada:hover .entrada__leer{background:var(--copo);color:var(--negro)}
+@media (min-width:720px){
+  .entrada,.entrada.entrada--dinero,.entrada.entrada--mente,.entrada.entrada--alma{
+    grid-template-columns:1fr;justify-items:center;padding:48px 24px;
+  }
+  .entrada__titulo,.entrada__extracto,.entrada__pilar,.entrada__leer{grid-column:auto;grid-row:auto;text-align:center}
+}
+</style>
+<style>
+/* ── Ports Cult UI aprobados (2026-08-17): grain global + menú animado ── */
+/* texture-overlay → grain estático de película, canon "fine grain" */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+/* family-drawer → despliegue del menú con stagger */
+@media (prefers-reduced-motion:no-preference){
+  .menu-global:not([hidden]){animation:menuDown .28s cubic-bezier(.22,.6,.2,1)}
+  .menu-global:not([hidden]) a{animation:menuItem .35s cubic-bezier(.22,.6,.2,1) backwards}
+  .menu-global a:nth-child(1){animation-delay:.03s}
+  .menu-global a:nth-child(2){animation-delay:.06s}
+  .menu-global a:nth-child(3){animation-delay:.09s}
+  .menu-global a:nth-child(4){animation-delay:.12s}
+  .menu-global a:nth-child(5){animation-delay:.15s}
+  .menu-global a:nth-child(6){animation-delay:.18s}
+  @keyframes menuDown{from{opacity:0;transform:translateY(-8px)}}
+  @keyframes menuItem{from{opacity:0;transform:translateY(-6px)}}
+}
+</style>
+<style>
+/* text-animate → entrada del hero con stagger (blur-up) */
+@media (prefers-reduced-motion:no-preference){
+  .anim-hero>*{opacity:0;transform:translateY(24px);filter:blur(8px);animation:heroIn .9s cubic-bezier(.22,.6,.2,1) forwards}
+  .anim-hero>*:nth-child(1){animation-delay:.05s}
+  .anim-hero>*:nth-child(2){animation-delay:.18s}
+  .anim-hero>*:nth-child(3){animation-delay:.31s}
+  .anim-hero>*:nth-child(4){animation-delay:.44s}
+  .anim-hero>*:nth-child(5){animation-delay:.57s}
+  .anim-hero>*:nth-child(6){animation-delay:.70s}
+  .anim-hero>*:nth-child(7){animation-delay:.83s}
+  @keyframes heroIn{to{opacity:1;transform:none;filter:none}}
+}
+</style>
+<style>
+/* dynamic-island → chip de estado vivo */
+.isla{
+  margin-top:48px;display:inline-flex;align-items:center;gap:8px;
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);
+  border:1px solid var(--linea);padding:8px 16px;
+  transition:border-color .45s cubic-bezier(.22,.6,.2,1),color .45s;
+}
+.isla:hover{border-color:var(--acento);color:var(--copo)}
+.isla__dot{position:relative;width:8px;height:8px;border-radius:50%;background:var(--acento);flex:none}
+.isla__go{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;color:var(--acento);font-weight:700;transition:max-width .45s cubic-bezier(.22,.6,.2,1),opacity .45s,margin-left .45s}
+.isla:hover .isla__go{max-width:96px;opacity:1;margin-left:8px}
+@media (prefers-reduced-motion:no-preference){
+  .isla__dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--acento);animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+  @keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+}
+</style>
+<style>
+/* border-beam-button → viga sutil que recorre el borde superior */
+@media (prefers-reduced-motion:no-preference){
+  .btn-beam{position:relative;overflow:hidden}
+  .btn-beam::after{content:"";position:absolute;top:0;left:-32px;width:32px;height:1px;background:var(--copo);opacity:.9;animation:beamEdge 3.2s linear infinite}
+  @keyframes beamEdge{to{left:100%}}
+}
+</style>
+<style>
+/* shift-card → zoom de miniatura + reveal "Ver el VOD" (scrim derivado del negro) */
+.directo{overflow:hidden}
+.directo__thumb img{transition:transform .5s cubic-bezier(.22,.6,.2,1)}
+.directo:hover .directo__thumb img{transform:scale(1.05)}
+.directo__thumb::after{
+  content:"Ver el VOD →";position:absolute;left:0;right:0;bottom:0;
+  padding:12px 16px;background:rgba(7,9,12,.78);color:var(--copo);
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  transform:translateY(101%);transition:transform .35s cubic-bezier(.22,.6,.2,1);
+}
+.directo:hover .directo__thumb::after{transform:none}
+@media (prefers-reduced-motion:reduce){.directo__thumb::after{display:none}}
+</style>
+<style>
+/* popover-form → estados del formulario con transición */
+.news-form__nota{transition:color .3s,transform .3s}
+.news-form__nota.ok{transform:translateY(-2px);font-weight:700}
+.sec--dark .news-form__nota.ok{color:var(--acento)}
+.sec--light .news-form__nota.ok{color:var(--negro)}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav" aria-label="Principal">
+  <a class="nav__marca" href="#inicio">
+    <!-- stroke 4: equivalente óptico de la excepción del avatar para renders pequeños (polyline canónica intacta) -->
+    <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="nav__wordmark">GSNOW<span>888</span></span>
+  </a>
+  <div class="nav__der">
+    <a class="nav__cta" href="https://www.youtube.com/@Cuatro4tros/live" target="_blank" rel="noopener">Ver en vivo</a>
+    <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="menu-global">Menú</button>
+  </div>
+</nav>
+<div class="menu-global" id="menu-global" hidden>
+  <a href="index.html" aria-current="page">Inicio</a>
+  <a href="directos.html">Directos</a>
+  <a href="pilares.html">El sistema</a>
+  <a href="historia.html">Quién soy</a>
+  <a href="letter.html">Letter</a>
+  <a href="curso.html">Curso</a>
+</div>
+
+<!-- ════════ HERO ════════ -->
+<header class="hero" id="inicio">
+  <video class="hero__video" poster="media/hero-montana-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+  <div class="hero__velo" aria-hidden="true"></div>
+  <canvas class="nieve" aria-hidden="true"></canvas>
+  <div class="hero__inner anim-hero">
+    <div class="hero__simbolo" role="img" aria-label="Símbolo GSNOW888: montaña de cuatro picos con final de línea de tendencia">
+      <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="eyebrow">Analista de mercados</p>
+    <h1 class="wordmark">GSNOW<span>888</span></h1>
+    <p class="hero__nombre-real">Gregorio Sánchez Calderón</p>
+    <p class="hero__linea">Cuerpo · Mente · Alma · Dinero</p>
+    <p class="hero__lead">Todo lo que soy empezó en mis pensamientos: primero vi la cima, después decidí ganármela. Soy un creador, y esta es mi obra en vivo — el mercado con mi comunidad en directo, un pensamiento bien contado cada semana, una vida entera subiendo la montaña. 1% cada día, con testigos.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--acento btn-beam" href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">Ver en YouTube</a>
+      <!-- CONFIRMAR: canal de Kick sin URL todavía — se asumió kick.com/gsnow888 -->
+      <a class="btn" href="https://kick.com/gsnow888" target="_blank" rel="noopener">Ver en Kick</a>
+    </div>
+    <a class="hero__historia" href="historia.html">
+      <span class="hero__historia-kicker">Quién es GSNOW888</span>
+      <span class="hero__historia-titulo">La historia y los principios <span class="hero__historia-flecha">→</span></span>
+    </a>
+    <!-- PLACEHOLDER: confirmar día/hora del próximo directo -->
+    <a class="isla" href="https://www.youtube.com/@Cuatro4tros/live" target="_blank" rel="noopener">
+      <span class="isla__dot" aria-hidden="true"></span>
+      <span>Próximo directo — análisis del mercado y plática</span>
+      <span class="isla__go" aria-hidden="true">Entrar →</span>
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ════════ 01 DIRECTOS (blanco) ════════ -->
+<section class="sec sec--light" id="directos" aria-labelledby="t-directos">
+  <div class="wrap">
+    <p class="eyebrow">01 · Últimos directos</p>
+    <h2 class="titulo" id="t-directos">Lo que pasó en cámara.</h2>
+    <p class="lead">Análisis del mercado y plática con la comunidad, tal como pasó. Sin cortes ni resumen conveniente — el VOD completo o nada.</p>
+
+    <!-- Videos REALES del canal youtube.com/@Cuatro4tros (feed RSS, 2026-08-14).
+         Al subir nuevos directos, actualizar cards con título, fecha y videoId. -->
+    <div class="directos">
+      <a class="directo" href="https://www.youtube.com/watch?v=jkepu1cMpvA" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/jkepu1cMpvA/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Directo</span><span>·</span><span>14 ago 2026</span></p>
+          <h3 class="directo__titulo">Live with Restream, August 14</h3>
+        </div>
+      </a>
+      <a class="directo directo--alma" href="https://www.youtube.com/watch?v=ryZdbLdtidY" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/ryZdbLdtidY/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Alma</span><span>·</span><span>10 jul 2025</span></p>
+          <h3 class="directo__titulo">Tú creas el mundo que tanto te quejas</h3>
+        </div>
+      </a>
+      <a class="directo directo--mente" href="https://www.youtube.com/watch?v=um6FPvsg_kc" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/um6FPvsg_kc/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Mente</span><span>·</span><span>16 jun 2025</span></p>
+          <h3 class="directo__titulo">La fórmula real de la acción (y por qué no avanzas)</h3>
+        </div>
+      </a>
+      <a class="directo directo--cuerpo" href="https://www.youtube.com/watch?v=TbwZXtvU0W4" target="_blank" rel="noopener">
+        <div class="directo__thumb">
+          <img src="https://i.ytimg.com/vi/TbwZXtvU0W4/hqdefault.jpg" alt="" loading="lazy">
+        </div>
+        <div class="directo__linea" aria-hidden="true"></div>
+        <div class="directo__cuerpo">
+          <p class="directo__meta"><span>Cuerpo</span><span>·</span><span>3 jun 2025</span></p>
+          <h3 class="directo__titulo">No fue fácil, pero lo hice igual (sigo con el 1%)</h3>
+        </div>
+      </a>
+    </div>
+
+    <a class="ver-todo" href="directos.html">Ver todos los directos →</a>
+  </div>
+</section>
+
+<!-- ════════ 02 NEWSLETTER (negro) ════════ -->
+<section class="sec sec--dark" id="newsletter" aria-labelledby="t-newsletter">
+  <div class="wrap">
+    <p class="eyebrow">02 · Newsletter</p>
+    <h2 class="titulo" id="t-newsletter">La Cuatro4tros Letter.</h2>
+    <p class="lead">Un correo por semana, escrito por mí. Mi punto de vista profesional sobre los mercados, el cuerpo, la mente y lo que estoy construyendo — opinión con razonamiento, no resúmenes ni refritos. Lo que pienso de verdad, sin algoritmo de por medio.</p>
+
+    <!-- Formulario conectado al backend real de la Letter (backend/Code.gs, action:'letter').
+         Tras el deploy (backend/INSTRUCCIONES.md), pegar la URL del Web App en WEBAPP_URL (script al final del archivo). -->
+    <form class="news-form" id="form-letter" novalidate>
+      <label class="sr-only" for="letter-email">Tu correo</label>
+      <input class="news-form__input" id="letter-email" type="email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+      <button class="btn btn--acento" type="submit">Unirme a la Letter</button>
+    </form>
+    <p class="news-form__nota" id="letter-msg" role="status">Sin spam. Un correo a la semana, y te puedes ir cuando quieras. Lo que recibes son opiniones personales, no recomendaciones de inversión. <a href="privacidad.html" style="color:inherit;text-decoration:underline">Aviso de privacidad</a>.</p>
+
+    <!-- PLACEHOLDER: ediciones de ejemplo con voz de marca — reemplazar por las reales al publicar -->
+    <p class="news-ediciones__label">Ediciones recientes</p>
+    <div class="entradas">
+      <a class="entrada entrada--dinero" href="#">
+        <p class="entrada__pilar">Dinero</p>
+        <h3 class="entrada__titulo">Opinión: tres velas verdes no son una tendencia</h3>
+        <p class="entrada__extracto">El mercado premia la paciencia y cobra caro la ansiedad. Mi lectura de por qué sobre-operamos justo después de acertar.</p>
+        <span class="entrada__leer">Leer la edición →</span>
+      </a>
+      <a class="entrada entrada--mente" href="#">
+        <p class="entrada__pilar">Mente</p>
+        <h3 class="entrada__titulo">La productividad se volvió un vicio respetable</h3>
+        <p class="entrada__extracto">Optimizar la agenda para no pensar también es procrastinar. Mi postura completa, con matices.</p>
+        <span class="entrada__leer">Leer la edición →</span>
+      </a>
+      <a class="entrada entrada--alma" href="#">
+        <p class="entrada__pilar">Alma</p>
+        <h3 class="entrada__titulo">Medito antes de operar, y no es espiritualidad de póster</h3>
+        <p class="entrada__extracto">Cinco minutos de silencio valen más que tres indicadores. El razonamiento completo, sin humo.</p>
+        <span class="entrada__leer">Leer la edición →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 03 TIPS (blanco) ════════ -->
+<section class="sec sec--light" id="tips" aria-labelledby="t-tips">
+  <div class="wrap">
+    <p class="eyebrow">03 · Lo que hago</p>
+    <h2 class="titulo" id="t-tips">Tips en formato 1%.</h2>
+    <p class="lead">No es teoría: es lo que se me ve hacer en cámara, reducido a una acción que puedes copiar hoy.</p>
+
+    <div class="tips">
+      <article class="tip tip--cuerpo">
+        <p class="tip__pilar">Cuerpo</p>
+        <p class="tip__verdad">Entreno a las 6:00 no por disciplina: porque a esa hora nadie me puede interrumpir.</p>
+        <p class="tip__accion">→ HOY: aparta la primera hora del día para ti — sin teléfono, sin nadie.</p>
+      </article>
+      <article class="tip tip--mente">
+        <p class="tip__pilar">Mente</p>
+        <p class="tip__verdad">Leo con pluma en mano. Lo que no se anota, se olvida en 48 horas.</p>
+        <p class="tip__accion">→ HOY: subraya una sola idea y escríbela con tus palabras.</p>
+      </article>
+      <article class="tip tip--alma">
+        <p class="tip__pilar">Alma</p>
+        <p class="tip__verdad">Medito antes de operar. El mercado huele el apuro.</p>
+        <p class="tip__accion">→ HOY: 5 minutos de silencio antes de tu primera decisión importante.</p>
+      </article>
+      <article class="tip tip--dinero">
+        <p class="tip__pilar">Dinero</p>
+        <p class="tip__verdad">Escribo el plan antes de abrir la plataforma. Si no está escrito, no existe.</p>
+        <p class="tip__accion">→ HOY: define tu pérdida máxima antes de entrar, no después.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 04 LA SEMANA (negro) ════════ -->
+<section class="sec sec--dark" id="semana" aria-labelledby="t-semana">
+  <div class="wrap">
+    <p class="eyebrow">04 · El contenido</p>
+    <h2 class="titulo" id="t-semana">Dos formatos. Nada más.</h2>
+    <p class="lead">Documentar y grabar — ese es el enfoque. Los cuatro pilares no tienen horario propio: viven dentro de dos formatos.</p>
+
+    <!-- PLACEHOLDER: confirmar días y horas de los directos antes de publicar -->
+    <div class="semana">
+      <div class="dia dia--dinero">
+        <p class="dia__pilar">En vivo</p>
+        <p class="dia__serie">El directo — análisis del mercado y plática</p>
+        <p class="dia__cadencia">Con el mercado abierto · Días por confirmar</p>
+      </div>
+      <div class="dia dia--mente">
+        <p class="dia__pilar">Cada semana</p>
+        <p class="dia__serie">El video — un pensamiento con storytelling</p>
+        <p class="dia__cadencia">1 × semana</p>
+      </div>
+    </div>
+
+    <div class="semana__cta">
+      <a class="btn btn--acento" href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">Seguir en YouTube</a>
+      <a class="btn" href="https://kick.com/gsnow888" target="_blank" rel="noopener">Seguir en Kick</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ════════ FOOTER (blanco — efecto montaña) ════════ -->
+<footer class="footer" id="canales">
+  <div class="footer__paisaje" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="capa capa--lejana" fill="rgba(7,9,12,.05)" d="M0,200 L0,120 L140,60 L260,110 L420,40 L560,100 L720,24 L880,90 L1040,50 L1200,110 L1320,70 L1440,130 L1440,200 Z"/>
+      <path class="capa capa--cercana" fill="rgba(7,9,12,.09)" d="M0,200 L0,150 L180,90 L340,140 L520,70 L700,130 L900,50 L1080,120 L1260,80 L1440,140 L1440,200 Z"/>
+    </svg>
+  </div>
+  <svg class="logo" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- wordmark monocromo: el 888 solo lleva azul sobre fondos oscuros (regla canónica) -->
+  <p class="footer__firma">GSNOW888 — 1% cada día</p>
+  <p class="footer__identidad">GSNOW888 es Gregorio Sánchez Calderón.</p>
+  <div class="footer__handles">
+    <a href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://kick.com/gsnow888" target="_blank" rel="noopener">Kick</a>
+    <a href="https://www.instagram.com/gsnow888" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/gregorio-s%C3%A1nchez-calder%C3%B3n-6ba82128a/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="historia.html#perfil">Perfil</a>
+    <a href="privacidad.html">Privacidad</a>
+    <a href="aviso-legal.html">Aviso legal</a>
+  </div>
+  <p class="footer__descargo">Todo lo publicado aquí son opiniones personales con fines educativos. No es asesoría de inversión. <a href="aviso-legal.html">Aviso legal</a></p>
+  <p class="footer__linea">Cuerpo · Mente · Alma · Dinero</p>
+</footer>
+
+<script>
+/* Video de fondo del hero: solo se descarga en pantallas ≥720px, sin prefers-reduced-motion
+   y sin save-data. En cualquier otro caso queda el poster (155KB) — nunca se castiga al móvil. */
+(function(){
+  var v=document.querySelector('.hero__video');if(!v)return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn=navigator.connection||{};
+  if(reduce||conn.saveData||!matchMedia('(min-width:720px)').matches)return;
+  var s=document.createElement('source');s.src='media/hero-montana.mp4';s.type='video/mp4';
+  v.appendChild(s);v.load();
+  var p=v.play();if(p&&p.catch)p.catch(function(){});
+})();
+</script>
+<!-- Nieve canónica (solo el hero tiene canvas.nieve) -->
+<script>
+(function(){
+  var c=document.querySelector('canvas.nieve');if(!c)return;var x=c.getContext('2d'),W,H,F=[];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+  function build(){F=[];var N=Math.round(W*H/18000);for(var i=0;i<N;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,s:.25+Math.random()*.9,a:.12+Math.random()*.45,p:Math.random()*6.28})}
+  function frame(){x.clearRect(0,0,W,H);for(var i=0;i<F.length;i++){var f=F[i];x.globalAlpha=f.a;x.beginPath();x.arc(f.x,f.y,f.r,0,6.28);x.fillStyle='#FFFFFF';x.fill();if(!reduce){f.y+=f.s;f.x+=Math.sin(f.p+=.004)*.18;if(f.y>H+4){f.y=-4;f.x=Math.random()*W}}}x.globalAlpha=1;if(!reduce)requestAnimationFrame(frame)}
+  /* el resize repuebla la densidad y repinta un frame también en modo estático (reduced motion) */
+  addEventListener('resize',function(){size();build();if(reduce)frame()});
+  size();build();frame();
+})();
+</script>
+<script>
+/* Efecto montaña del cierre: el trazo del logo se dibuja pico a pico y el
+   paisaje emerge, al entrar el footer en vista. Con prefers-reduced-motion
+   se muestra el estado final sin animación. */
+(function(){
+  var footer=document.querySelector('.footer');if(!footer)return;
+  var poly=footer.querySelector('svg.logo polyline');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(poly&&!reduce){
+    var L=poly.getTotalLength();
+    poly.style.strokeDasharray=L;
+    poly.style.strokeDashoffset=L;
+  }
+  function activar(){
+    footer.classList.add('en-vista');
+    if(poly&&!reduce)poly.style.strokeDashoffset='0';
+  }
+  if(reduce||!('IntersectionObserver' in window)){activar();return}
+  var io=new IntersectionObserver(function(es){
+    if(es[0].isIntersecting){activar();io.disconnect()}
+  },{threshold:.3});
+  io.observe(footer);
+})();
+</script>
+<script>
+/* Newsletter → backend real de la Cuatro4tros Letter (Google Apps Script, action:'letter').
+   1) Deploy del backend: backend/INSTRUCCIONES.md   2) Pegar aquí la URL del Web App. */
+(function(){
+  var WEBAPP_URL='PEGAR_URL_DEL_WEB_APP';
+  var form=document.getElementById('form-letter');if(!form)return;
+  var msg=document.getElementById('letter-msg');
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var email=(document.getElementById('letter-email').value||'').trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Ese correo no se ve bien. Revísalo.';return}
+    if(WEBAPP_URL.indexOf('http')!==0){msg.textContent='El backend de la Letter aún no está conectado (ver backend/INSTRUCCIONES.md).';return}
+    /* mode:no-cors — Apps Script no expone CORS; la respuesta es opaca pero el alta se registra */
+    fetch(WEBAPP_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({action:'letter',email:email,origen:'landing-gsnow888'})})
+      .then(function(){msg.textContent='Listo. Revisa tu correo: la bienvenida va en camino.';msg.classList.add('ok');form.reset()})
+      .catch(function(){msg.textContent='Algo falló. Intenta de nuevo en un momento.'});
+  });
+})();
+</script>
+<script>
+/* Directos AUTOMÁTICOS: si el endpoint está desplegado (web/videos-endpoint/INSTRUCCIONES.md),
+   las cards se refrescan solas con los últimos videos del canal @Cuatro4tros.
+   Si no está configurado o falla, quedan las cards fijas de respaldo — la página nunca se rompe. */
+(function(){
+  var VIDEOS_URL='PEGAR_URL_DEL_ENDPOINT_DE_VIDEOS';
+  if(VIDEOS_URL.indexOf('http')!==0)return;
+  fetch(VIDEOS_URL).then(function(r){return r.json()}).then(function(vs){
+    if(!vs||!vs.length)return;
+    var cont=document.querySelector('.directos');if(!cont)return;
+    var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    cont.innerHTML=vs.slice(0,4).map(function(v){
+      var f=String(v.fecha||'').split('-');
+      var fecha=f.length===3?parseInt(f[2],10)+' '+MESES[parseInt(f[1],10)-1]+' '+f[0]:'';
+      var esc=document.createElement('div');esc.textContent=v.titulo||'';var titulo=esc.innerHTML;
+      var id=encodeURIComponent(v.videoId||'');
+      return '<a class="directo" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener">'
+        +'<div class="directo__thumb"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="" loading="lazy"></div>'
+        +'<div class="directo__linea" aria-hidden="true"></div>'
+        +'<div class="directo__cuerpo"><p class="directo__meta"><span>Directo</span><span>·</span><span>'+fecha+'</span></p>'
+        +'<h3 class="directo__titulo">'+titulo+'</h3></div></a>';
+    }).join('');
+  }).catch(function(){});
+})();
+</script>
+<script>
+/* Menú desplegable global */
+(function(){
+  var btn=document.querySelector('.nav__menu-btn'),menu=document.getElementById('menu-global');
+  if(!btn||!menu)return;
+  function cerrar(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(){
+    var abierto=!menu.hidden;
+    menu.hidden=abierto;btn.setAttribute('aria-expanded',String(!abierto));
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+  document.addEventListener('click',function(e){
+    if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))cerrar();
+  });
+})();
+</script>
+</body>
+</html>

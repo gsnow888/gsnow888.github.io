@@ -1,0 +1,723 @@
+<!--
+  HISTORIA Y PERFIL — Quién es GSNOW888 (Gregorio Sánchez Calderón) — página COMBINADA (historia + perfil profesional, 2026-08-17). Hilo narrativo: crudo y real, mindset ganador y "todavía" (not yet).
+  Ensayo long-form al estilo Ray Dalio (primera persona, verdad incómoda,
+  principios numerados destilados de la experiencia), sobre el canon glacial
+  B/N + azules. Un solo archivo; única dependencia externa: Google Fonts.
+
+  Enlazado desde el nav de index.html ("Historia") y cruzado con
+  historia.html#perfil (los principios de operación I–IV viven allá).
+
+  DATOS [CONFIRMAR]: la sección "De dónde vengo" se redactó solo con hechos del
+  workspace (NEXUS, futuros bajo reglas escritas, software propio, proyectos
+  archivados). Verificar el detalle de mercados antes de publicar.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quién es GSNOW888 — Historia y perfil</title>
+<meta name="description" content="Un nombre real, una montaña que se sube en vivo y una palabra que lo sostiene todo: todavía. La historia y el perfil de Gregorio Sánchez Calderón, en sus propios términos.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 48'><polyline points='4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2' fill='none' stroke='%235FC8F5' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<!-- Open Graph: las URLs absolutas funcionan tras el deploy en gsnow888.com -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Quién es GSNOW888 — Historia y perfil">
+<meta property="og:description" content="La historia y los principios: un nombre real, una montaña que se sube en vivo y un número que no se explica.">
+<meta property="og:image" content="https://gsnow888.com/fotos/nb-hero.jpg">
+<meta property="og:url" content="https://gsnow888.com/historia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --negro:#07090C;
+  --carbon:#0E1216;
+  --blanco:#F4F8FB;
+  --copo:#FFFFFF;
+  --niebla:#9FB3BF;
+  --linea:rgba(159,179,191,.18);
+  --linea-luz:rgba(14,18,22,.14);
+  --tinta-suave:rgba(7,9,12,.62);
+  --acento:#5FC8F5;
+  --t:240ms cubic-bezier(.25,.6,.35,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;font-size:17px;line-height:1.7;
+  background:var(--negro);color:var(--blanco);-webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.sec--light a:focus-visible,.footer a:focus-visible{outline-color:var(--negro)}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+.prosa{max-width:68ch}
+.sec{padding-top:clamp(88px,11vw,144px);padding-bottom:clamp(88px,11vw,144px)}
+.sec--dark{background:var(--negro);color:var(--blanco)}
+.sec--light{background:var(--blanco);color:var(--negro)}
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--niebla);margin-bottom:24px;
+}
+.sec--light .eyebrow{color:var(--tinta-suave)}
+.titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(36px,5.4vw,64px);line-height:1;letter-spacing:.02em;
+  margin-bottom:32px;max-width:22ch;
+}
+.parrafo{margin-bottom:24px;color:var(--blanco)}
+.sec--light .parrafo{color:var(--negro)}
+.parrafo--secundario{color:var(--niebla)}
+.sec--light .parrafo--secundario{color:var(--tinta-suave)}
+.destacado{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(26px,3.6vw,44px);line-height:1.12;letter-spacing:.02em;
+  border-left:2px solid var(--acento);padding-left:24px;margin:48px 0;max-width:24ch;
+}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:10;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:var(--negro);border-bottom:1px solid var(--linea);
+}
+.nav__marca{display:flex;align-items:center;gap:16px;color:var(--blanco)}
+.nav__marca svg{width:40px;height:16px;flex:none}
+.nav__wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;letter-spacing:.12em}
+.nav__wordmark span{color:var(--acento)}
+.nav__volver{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);transition:color var(--t);
+}
+.nav__volver:hover{color:var(--copo)}
+.nav__links{display:none;align-items:center;gap:32px}
+.nav__links a{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);transition:color var(--t);
+}
+.nav__links a:hover{color:var(--copo)}
+.nav__cta{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acento);
+  border:1px solid var(--acento);padding:8px 16px;
+  transition:background var(--t),color var(--t);
+}
+.nav__cta:hover{background:var(--acento);color:var(--negro)}
+@media (min-width:900px){.nav__links{display:flex}}
+
+/* ── CABECERA DEL ARTÍCULO (negro, nieve) ── */
+.hero{
+  position:relative;min-height:88vh;min-height:88svh;overflow:hidden;
+  background:var(--negro);display:flex;align-items:flex-end;
+  padding:160px 0 clamp(64px,9vw,112px);
+}
+canvas.nieve{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero__inner{position:relative;z-index:1}
+.hero__kicker{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--acento);margin-bottom:24px;
+}
+.hero__titulo{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(56px,9vw,128px);line-height:.95;letter-spacing:.02em;color:var(--copo);
+  max-width:12ch;
+}
+.hero__lead{
+  font-size:clamp(18px,2.2vw,22px);line-height:1.55;color:var(--niebla);
+  max-width:52ch;margin-top:32px;
+}
+.hero__firma{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--niebla);margin-top:40px;
+}
+
+/* ── EL NOMBRE (tres partes) ── */
+.nombre{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+.nombre__pieza{border:1px solid var(--linea);padding:32px 24px}
+.nombre__letra{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(44px,5.6vw,64px);line-height:1;color:var(--acento);margin-bottom:16px;
+}
+.nombre__que{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--niebla);margin-bottom:16px;
+}
+.nombre__texto{font-size:16px;color:var(--niebla)}
+
+/* ── EL SISTEMA (4 pilares) ── */
+.pilares{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px}
+.pilar{border:1px solid var(--linea-luz);padding:32px 24px}
+.pilar__num{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;
+  color:var(--tinta-suave);display:block;margin-bottom:24px;
+}
+.pilar__linea{width:40px;height:2px;margin-bottom:24px}
+.pilar__nombre{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(28px,3.2vw,40px);line-height:1;letter-spacing:.04em;margin-bottom:8px;
+}
+.pilar__desc{
+  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tinta-suave);margin-bottom:16px;
+}
+.pilar__mantra{font-size:16px;color:var(--tinta-suave)}
+
+/* ── PRINCIPIOS ── */
+.principios{border-top:1px solid var(--linea);margin-top:56px}
+.principio{
+  display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:baseline;
+  padding:32px 0;border-bottom:1px solid var(--linea);
+}
+.principio__num{
+  font-family:'Space Mono',monospace;font-size:14px;font-weight:700;
+  letter-spacing:.2em;color:var(--acento);
+}
+.principio__texto{
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:clamp(24px,3vw,36px);line-height:1.1;letter-spacing:.02em;color:var(--copo);
+}
+.principio__nota{grid-column:2;color:var(--niebla);font-size:15px;max-width:60ch}
+
+/* ── EL DOCUMENTO (24 cosas a los 24) ── */
+.doc24{border-top:1px solid var(--linea-luz);margin-top:48px}
+.doc24__item{
+  display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid var(--linea-luz);
+  break-inside:avoid;-webkit-column-break-inside:avoid;
+}
+.doc24__num{
+  font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+  letter-spacing:.1em;color:var(--tinta-suave);
+}
+.doc24__texto{font-size:16px;line-height:1.6;color:var(--negro)}
+.doc24__coda{margin-top:40px}
+@media (min-width:900px){.doc24{columns:2;column-gap:72px}}
+
+/* ── CIERRE + CTA ── */
+.cierre__botones{display:flex;gap:16px;flex-wrap:wrap;margin-top:48px}
+.btn{
+  font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:16px 28px;border:1px solid var(--blanco);color:var(--blanco);
+  transition:background var(--t),color var(--t),border-color var(--t);display:inline-block;
+}
+.btn:hover{background:var(--blanco);color:var(--negro)}
+.btn--acento{border-color:var(--acento);color:var(--acento)}
+.btn--acento:hover{background:var(--acento);color:var(--negro)}
+
+/* ── FOOTER (efecto montaña — canon) ── */
+.footer{
+  position:relative;overflow:hidden;background:var(--blanco);color:var(--negro);
+  padding:96px 24px 176px;text-align:center;
+}
+.footer > :not(.footer__paisaje){position:relative;z-index:1}
+.footer svg.logo{width:96px;height:auto;margin:0 auto 24px;color:var(--negro)}
+.footer svg.logo polyline{transition:stroke-dashoffset 2.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje{position:absolute;left:0;right:0;bottom:0;pointer-events:none}
+.footer__paisaje svg{display:block;width:100%;height:clamp(80px,12vw,170px)}
+.footer__paisaje .capa{opacity:0;transform:translateY(28px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.25,.6,.35,1)}
+.footer__paisaje .capa--lejana{transition-delay:.2s}
+.footer__paisaje .capa--cercana{transition-delay:.45s}
+.footer.en-vista .capa{opacity:1;transform:none}
+.footer__firma{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,3vw,32px);letter-spacing:.12em;line-height:1;margin-bottom:16px;
+}
+.footer__handles{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.footer__handles a{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--negro);
+  border-bottom:2px solid var(--negro);padding-bottom:2px;
+  transition:color var(--t),border-color var(--t);
+}
+.footer__handles a:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+.footer__linea{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-indent:.32em;
+  text-transform:uppercase;color:var(--tinta-suave);
+}
+
+/* ── RESPONSIVE ── */
+@media (min-width:720px){
+  .wrap{padding-left:40px;padding-right:40px}
+  .nombre{grid-template-columns:repeat(3,1fr)}
+  .pilares{grid-template-columns:repeat(2,1fr)}
+  .nombre__pieza,.pilar{padding:40px 32px}
+}
+@media (min-width:1200px){
+  .wrap{padding-left:48px;padding-right:48px}
+  .pilares{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+<style>
+/* Descargo global: opiniones, no asesoría de inversión (ver aviso-legal.html) */
+.footer__descargo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--tinta-suave);max-width:64ch;margin:0 auto 16px}
+.footer__descargo a{text-decoration:underline}
+.footer__identidad{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:16px}
+</style>
+<style>
+/* ── Adiciones del merge historia+perfil ── */
+.hero__grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:end}
+.hero__foto{aspect-ratio:4/5;object-fit:cover;width:100%;max-width:380px;border:1px solid var(--linea);filter:grayscale(1) contrast(1.05)}
+.hero__credenciales{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;line-height:1.9;
+  text-transform:uppercase;color:var(--niebla);margin-top:24px;max-width:54ch;
+}
+.proyectos-intro{margin-top:64px}
+.pilar__ig{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;margin-top:16px}
+.pilar__ig a{color:var(--tinta-suave);text-decoration:underline;transition:color var(--t)}
+.pilar__ig a:hover{color:var(--negro)}
+.pilar__rol{color:var(--negro);font-weight:700}
+.cierre__galeria{display:grid;grid-template-columns:1fr;gap:24px;margin:48px 0;max-width:840px}
+.cierre__galeria img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1px solid var(--linea);filter:grayscale(1) contrast(1.05)}
+.cierre__galeria img:first-child{object-position:50% 22%}  /* retrato 4:5 en marco 3:2: bajar la foto para centrar la cara */
+@media (min-width:720px){
+  .hero__grid{grid-template-columns:3fr 2fr}
+  .cierre__galeria{grid-template-columns:1fr 1fr}
+}
+</style>
+<style>
+/* ── Nav v2: menú desplegable global (desktop + móvil) ── */
+.nav__der{display:flex;align-items:center;gap:16px}
+.nav__menu-btn{
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copo);background:none;border:1px solid var(--linea);
+  padding:8px 16px;cursor:pointer;transition:border-color var(--t),color var(--t);
+}
+.nav__menu-btn:hover{border-color:var(--niebla)}
+.nav__menu-btn[aria-expanded="true"]{color:var(--acento);border-color:var(--acento)}
+.menu-global{
+  position:fixed;top:56px;left:0;right:0;z-index:9;
+  background:var(--negro);border-bottom:1px solid var(--linea);
+  display:grid;gap:0;padding:16px 24px 24px;
+}
+.menu-global a{
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--niebla);padding:14px 8px;
+  border-bottom:1px solid var(--linea);transition:color var(--t);
+}
+.menu-global a:last-child{border-bottom:none}
+.menu-global a:hover{color:var(--copo)}
+.menu-global a[aria-current="page"]{color:var(--acento)}
+.menu-global[hidden]{display:none}
+@media (min-width:900px){.menu-global{grid-template-columns:repeat(3,1fr);gap:0 48px;padding:24px 48px 32px}}
+</style>
+<style>
+/* Imágenes de pilar en las cards del sistema (Higgsfield NB Pro 4k) */
+.pilar__img{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:16px;border:1px solid var(--linea-luz)}
+</style>
+<style>
+/* Preview del sistema (pedido 2026-08-17: aún sin detalle, solo avance) */
+.link-sistema{
+  display:inline-block;margin-top:8px;
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--negro);
+  border-bottom:2px solid var(--negro);padding-bottom:4px;
+  transition:color var(--t),border-color var(--t);
+}
+.link-sistema:hover{color:var(--tinta-suave);border-color:var(--tinta-suave)}
+</style>
+<style>
+/* Botón de proyecto (Northpoint → northpointcapital.io) */
+.pilar__btn{
+  display:inline-block;margin-top:16px;
+  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--negro);
+  border:1px solid var(--negro);padding:10px 16px;
+  transition:background var(--t),color var(--t);
+}
+.pilar__btn:hover{background:var(--negro);color:var(--blanco)}
+</style>
+<style>
+/* ── Portafolio Northpoint: stats bloqueadas (gráfica difuminada + acceso por suscripción) ── */
+.porta{position:relative;margin-top:64px;background:var(--negro);border:1px solid var(--linea-luz);overflow:hidden;text-align:center;padding:clamp(56px,8vw,96px) 24px}
+.porta__chart{position:absolute;inset:0;filter:blur(7px);opacity:.55}
+.porta__chart svg{width:100%;height:100%}
+.porta__velo{position:absolute;inset:0;background:rgba(7,9,12,.62)}  /* tinta-suave ratificado: AA del texto */
+.porta__contenido{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px}
+.porta__label{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--niebla)}
+.porta__titulo{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,4.4vw,52px);line-height:1;letter-spacing:.02em;color:var(--copo);max-width:18ch}
+.porta__texto{color:var(--niebla);max-width:52ch;font-size:16px}
+.porta .btn{margin-top:16px}
+.porta__nota{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--niebla);margin-top:8px}
+.porta__nota a{text-decoration:underline}
+</style>
+<style>
+/* ── Ports Cult UI aprobados (2026-08-17): grain global + menú animado ── */
+/* texture-overlay → grain estático de película, canon "fine grain" */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+/* family-drawer → despliegue del menú con stagger */
+@media (prefers-reduced-motion:no-preference){
+  .menu-global:not([hidden]){animation:menuDown .28s cubic-bezier(.22,.6,.2,1)}
+  .menu-global:not([hidden]) a{animation:menuItem .35s cubic-bezier(.22,.6,.2,1) backwards}
+  .menu-global a:nth-child(1){animation-delay:.03s}
+  .menu-global a:nth-child(2){animation-delay:.06s}
+  .menu-global a:nth-child(3){animation-delay:.09s}
+  .menu-global a:nth-child(4){animation-delay:.12s}
+  .menu-global a:nth-child(5){animation-delay:.15s}
+  .menu-global a:nth-child(6){animation-delay:.18s}
+  @keyframes menuDown{from{opacity:0;transform:translateY(-8px)}}
+  @keyframes menuItem{from{opacity:0;transform:translateY(-6px)}}
+}
+</style>
+<style>
+/* text-animate → entrada del hero con stagger (blur-up) */
+@media (prefers-reduced-motion:no-preference){
+  .anim-hero>*{opacity:0;transform:translateY(24px);filter:blur(8px);animation:heroIn .9s cubic-bezier(.22,.6,.2,1) forwards}
+  .anim-hero>*:nth-child(1){animation-delay:.05s}
+  .anim-hero>*:nth-child(2){animation-delay:.18s}
+  .anim-hero>*:nth-child(3){animation-delay:.31s}
+  .anim-hero>*:nth-child(4){animation-delay:.44s}
+  .anim-hero>*:nth-child(5){animation-delay:.57s}
+  .anim-hero>*:nth-child(6){animation-delay:.70s}
+  .anim-hero>*:nth-child(7){animation-delay:.83s}
+  @keyframes heroIn{to{opacity:1;transform:none;filter:none}}
+}
+</style>
+<style>
+/* distorted-glass → deriva lenta de la gráfica + reflejo de vidrio */
+@media (prefers-reduced-motion:no-preference){
+  .porta__chart{animation:portaDrift 14s ease-in-out infinite alternate}
+  @keyframes portaDrift{from{transform:translateX(-2%) scale(1.03)}to{transform:translateX(2%) scale(1.07)}}
+}
+.porta__velo{background:linear-gradient(105deg,rgba(7,9,12,.68) 0%,rgba(7,9,12,.52) 45%,rgba(7,9,12,.72) 100%)}
+.porta__velo::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 42%,rgba(244,248,251,.05) 47%,transparent 52%)}
+</style>
+<style>
+/* feature-carousel → galería con scroll-snap */
+.cierre__galeria--carrusel{display:flex;grid-template-columns:none;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;max-width:none;padding-bottom:8px;scrollbar-width:thin}
+.cierre__galeria--carrusel img{min-width:min(480px,78vw);scroll-snap-align:start}
+</style>
+<style>
+/* Links de mentores en la prosa (sección oscura) */
+.enlace-mentor{color:var(--copo);border-bottom:1px solid var(--acento);transition:color var(--t)}
+.enlace-mentor:hover{color:var(--acento)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <a class="nav__marca" href="index.html">
+    <!-- stroke 4: excepción canónica para renders pequeños -->
+    <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="nav__wordmark">GSNOW<span>888</span></span>
+  </a>
+  <div class="nav__der">
+    <a class="nav__cta" href="https://www.youtube.com/@Cuatro4tros/live" target="_blank" rel="noopener">Ver en vivo</a>
+    <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="menu-global">Menú</button>
+  </div>
+</nav>
+<div class="menu-global" id="menu-global" hidden>
+  <a href="index.html">Inicio</a>
+  <a href="directos.html">Directos</a>
+  <a href="pilares.html">El sistema</a>
+  <a href="historia.html" aria-current="page">Quién soy</a>
+  <a href="letter.html">Letter</a>
+  <a href="curso.html">Curso</a>
+</div>
+
+<!-- ════════ CABECERA (negro, nieve) ════════ -->
+<header class="hero">
+  <canvas class="nieve" aria-hidden="true"></canvas>
+  <div class="wrap hero__inner">
+    <div class="hero__grid">
+      <div class="anim-hero">
+        <p class="hero__kicker">Historia y perfil · Querétaro, México</p>
+        <h1 class="hero__titulo">Quién es GSNOW888.</h1>
+        <p class="hero__lead">Escribo esta página para mí antes que para nadie: es mi espejo y mi contrato. Yo ya vi en mis pensamientos la versión en la que me voy a convertir, y agradezco infinitamente la oportunidad de ganármela. <strong>Pero no ha sido fácil, y todavía queda un camino muy importante en esta aventura.</strong> Esa palabra — <em>todavía</em> — es mi motor.</p>
+        <p class="hero__credenciales">Licenciado en Derecho — Universidad Anáhuac Querétaro · Wealth Management · Daytrader · Analista de Mercados Financieros · IA Developer · Data Science</p>
+        <p class="hero__firma">Por Gregorio Sánchez Calderón — GSNOW888 en cámara</p>
+      </div>
+      <img class="hero__foto" src="fotos/nb-hero.jpg" alt="Gregorio Sánchez Calderón, retrato editorial en blanco y negro">
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ════════ 01 POR QUÉ ESCRIBO ESTO (negro) ════════ -->
+<article>
+<section class="sec sec--dark" aria-labelledby="t-porque">
+  <div class="wrap">
+    <p class="eyebrow">01 · Por qué escribo esto</p>
+    <h2 class="titulo" id="t-porque">Un contrato, no una bio.</h2>
+    <div class="prosa">
+      <!-- Cita verbatim del post de IG @gsnow888 (verificada contra screenshot, 2026-08-17).
+           [CONFIRMAR] ortografía de nombres: "Ricardo Zuribia", "Julián Alborna", "Pedro Triple P" —
+           y de preferencia avisar a los mencionados antes de publicar. -->
+      <p class="destacado">"El hombre sabio debe únicamente seguir los caminos que abrieron otros, tenidos por superiores, e imitar bien a los que han sobresalido, a fin de que, si no se consigue igualarles, se les acercase al menos una cosa." — Nicolás Maquiavelo</p>
+      <p class="parrafo">Me lo tomé literal. A los 24 escribí que eres el promedio de las cinco personas con las que te juntas — y decidí que mi promedio no iba a ser un accidente. Me rodeé, a propósito, de mentores y maestros que ya habían subido montañas que yo apenas veía de lejos: multimillonarios y expertos, cada uno excelentísimo en un terreno distinto — lo espiritual, las finanzas, la tecnología, la inversión, la educación financiera.</p>
+      <p class="parrafo">De esa mesa aprendí y sigo aprendiendo: Ricardo Zuribia, Esteban Echevarría de <a class="enlace-mentor" href="https://www.mvdtrading.com/" target="_blank" rel="noopener">MVD Trading Academy</a>, Julián Alborna, Ricardo Leyva, Juan Lombana, Eduardo Vázquez, Pedro "Triple P"… entre otros. A cada uno le debo una pieza distinta del mapa que hoy uso para subir. Pasar esta experiencia con seres humanos increíbles me ha llenado el alma.</p>
+      <p class="parrafo">Ray Dalio escribió sus principios para que su vida no fuera un misterio — ni para los demás, ni para él mismo — y esa idea me ordenó la cabeza: si voy a encender una cámara y dejar que me veas entrenar, leer, sentarme en silencio y operar los mercados, lo mínimo que te debo — y que me debo — es saber quién soy y bajo qué reglas juego. Y una promesa más concreta: como fundador de Nex Digital, cofundador de Northpoint y de los negocios que se vayan sumando a esta aventura, aquí vas a aprender cómo se vive con autenticidad — decisiones reales, empresas reales, y la vida completa sin maquillar.</p>
+      <p class="parrafo parrafo--secundario">Esto no es una biografía pulida. Es el documento que me obliga a ser el mismo con la cámara encendida y apagada. Lo escribo para mí primero: no traicionarme y ser auténtico es lo que le da sentido a mi vida — eso lo firmé a los 24, antes de que existiera esta página. Si algún día notas diferencia entre lo que dice esta página y lo que ves en un directo, gana el directo — y me corriges.</p>
+      <p class="destacado">Lo que se muestra sin editar no se puede maquillar después.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 02 DE DÓNDE VENGO (blanco) ════════ -->
+<section class="sec sec--light" aria-labelledby="t-origen">
+  <div class="wrap">
+    <p class="eyebrow">02 · De dónde vengo</p>
+    <h2 class="titulo" id="t-origen">Más archivos que lanzamientos.</h2>
+    <div class="prosa">
+      <p class="parrafo">Soy mexicano y construyo cosas para vivir. Fundé NEXUS, un estudio donde aplico inteligencia artificial y automatización a negocios reales — hoteles, comercios, marcas que necesitan sistemas que funcionen, no promesas. <!-- [CONFIRMAR] detalle de mercados antes de publicar --> Opero futuros bajo un sistema de reglas escritas, con la pérdida máxima definida antes de abrir cada posición. Y el software con el que gestiono mi propio dinero no lo compré: lo escribí yo.</p>
+      <p class="parrafo">Ahora la parte que un perfil de LinkedIn no te diría: <strong>he fracasado en más negocios de los que he lanzado.</strong> La marca personal que pausé — doce páginas de arquitectura impecable donde todo decía "próximamente" — no fue la primera ni la única. Antes y después hubo más: negocios que no encontraron clientes, ideas que se quedaron en el logo, proyectos que murieron esperando a que yo dejara de tenerles miedo. Dolió cada uno. Y aun así, en medio de esos archivos, escribí "estoy feliz y agradecido con la vida" — y la sostengo. Cada uno se archivó con la verdad por delante.</p>
+      <!-- [CONFIRMAR]: si quieres nombrar fracasos concretos (qué negocio, qué año, qué pasó), esta sección gana aún más crudeza real -->
+      <p class="parrafo parrafo--secundario">Ese archivo de fracasos no es mi vergüenza: es mi currículum real, y <strong>cada fracaso fue un aprendizaje más</strong>. Uno me enseñó que la arquitectura sin sustancia es un experimento. Otro, que un negocio sin números es una historia que te cuentas. Otro, que el miedo solo es el empujón que necesitas para hacer las cosas con las que sueñas — me costó proyectos enteros entenderlo, pero nunca es tarde si tienes la voluntad de hacerlo hoy. GSNOW888 existe por esa escuela — esta vez la sustancia va primero, y si algo vuelve a fracasar, también se documenta.</p>
+      <p class="destacado">Cada intento archivado no dice "fracasé". Dice "todavía no". Mi objetivo es el mismo — el plan puede cambiar.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ 03 EL NOMBRE (negro) ════════ -->
+<section class="sec sec--dark" aria-labelledby="t-nombre">
+  <div class="wrap">
+    <p class="eyebrow">03 · El nombre</p>
+    <h2 class="titulo" id="t-nombre">Tres piezas, cero misterio.<br>Bueno — una.</h2>
+
+    <div class="nombre">
+      <div class="nombre__pieza">
+        <h3 class="nombre__letra">G</h3>
+        <p class="nombre__que">De Gregorio</p>
+        <p class="nombre__texto">Un nombre, no un alias. Lo que pasa en cámara le pasa a una persona real — y eso me obliga a que sea verdad.</p>
+      </div>
+      <div class="nombre__pieza">
+        <h3 class="nombre__letra">SNOW</h3>
+        <p class="nombre__que">La montaña que subo en vivo</p>
+        <p class="nombre__texto">No el resumen de la cima: la subida completa, con clima malo incluido. La nieve es el terreno, no la decoración.</p>
+      </div>
+      <div class="nombre__pieza">
+        <h3 class="nombre__letra">888</h3>
+        <p class="nombre__que">Abundancia</p>
+        <p class="nombre__texto">No lo explico para venderte nada. Lo creo de verdad: al igual que Dios, soy un ser creador, y la abundancia se practica. Quien tenga que entenderlo, lo va a entender.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 04 EL SISTEMA (blanco) ════════ -->
+<section class="sec sec--light" id="perfil" aria-labelledby="t-sistema">
+  <div class="wrap">
+    <p class="eyebrow">04 · El presente</p>
+    <h2 class="titulo" id="t-sistema">Lo que hago hoy — y el sistema que lo ordena.</h2>
+    <div class="prosa proyectos-intro">
+      <p class="parrafo">Trabajar por mis sueños es mucho mejor que trabajar para los sueños de alguien más. Hoy ese trabajo se ve así — tres frentes, tres proyectos con nombre propio:</p>
+    </div>
+
+    <!-- Fuentes: bio IG @gsnow888 + LinkedIn del usuario (2026-08-17).
+         [CONFIRMAR]: descripciones comerciales de Northpoint y Nex Digital. -->
+    <div class="pilares">
+      <article class="pilar">
+        <span class="pilar__num">IA</span>
+        <div class="pilar__linea" style="background:#5FC8F5" aria-hidden="true"></div>
+        <h3 class="pilar__nombre">Nex Digital</h3>
+        <p class="pilar__desc">Founder</p>
+        <p class="pilar__mantra"><span class="pilar__rol">Estudio de IA y digital:</span> sitios, automatización e inteligencia artificial aplicadas a negocios reales.</p>
+        <p class="pilar__ig"><a href="https://www.instagram.com/nexdigital.ia" target="_blank" rel="noopener">@nexdigital.ia</a></p>
+        <a class="pilar__btn" href="https://nexus-digital-production.up.railway.app/" target="_blank" rel="noopener">Visitar Nex Digital →</a>
+      </article>
+      <article class="pilar">
+        <span class="pilar__num">Trading</span>
+        <div class="pilar__linea" style="background:#2E9BD6" aria-hidden="true"></div>
+        <h3 class="pilar__nombre">Northpoint</h3>
+        <p class="pilar__desc">Co-founder</p>
+        <p class="pilar__mantra"><span class="pilar__rol">Comunidad de trading e inversión para LATAM.</span> Además, operativa propia de futuros con reglas escritas y líneas rojas no negociables.</p>
+        <p class="pilar__ig"><a href="https://www.instagram.com/northpoint.latam" target="_blank" rel="noopener">@northpoint.latam</a></p>
+        <a class="pilar__btn" href="https://northpointcapital.io" target="_blank" rel="noopener">Visitar Northpoint →</a>
+      </article>
+      <article class="pilar">
+        <span class="pilar__num">Wealth</span>
+        <div class="pilar__linea" style="background:#A9DFF7" aria-hidden="true"></div>
+        <h3 class="pilar__nombre">CUATRO4TROS</h3>
+        <p class="pilar__desc">El sistema, en público</p>
+        <p class="pilar__mantra"><span class="pilar__rol">La casa de todo esto:</span> los streams del mercado, el video semanal, la Letter y el curso. Patrimonio con proceso.</p>
+        <p class="pilar__ig"><a href="https://www.instagram.com/gsnow888" target="_blank" rel="noopener">@gsnow888</a></p>
+      </article>
+    </div>
+
+    <!-- ── El portafolio Northpoint: stats bloqueadas para suscriptores.
+         Deliberado: el sitio público NO muestra números ni rendimientos (línea legal);
+         las estadísticas viven dentro de Northpoint. ── -->
+    <div class="porta">
+      <div class="porta__chart" aria-hidden="true">
+        <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+          <g fill="#9FB3BF" opacity=".55">
+            <rect x="20" y="120" width="14" height="50"/><rect x="60" y="100" width="14" height="62"/>
+            <rect x="100" y="112" width="14" height="44"/><rect x="140" y="84" width="14" height="70"/>
+            <rect x="180" y="96" width="14" height="52"/><rect x="220" y="70" width="14" height="72"/>
+          </g>
+          <g fill="#5FC8F5" opacity=".7">
+            <rect x="260" y="76" width="14" height="58"/><rect x="300" y="58" width="14" height="70"/>
+            <rect x="340" y="66" width="14" height="52"/><rect x="380" y="42" width="14" height="76"/>
+            <rect x="420" y="50" width="14" height="58"/><rect x="460" y="28" width="14" height="74"/>
+            <rect x="500" y="36" width="14" height="56"/><rect x="540" y="16" width="14" height="70"/>
+          </g>
+          <polyline points="20,44 100,130 170,110 240,140 320,80 400,96 480,40 590,8" fill="none" stroke="#F4F8FB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="porta__velo" aria-hidden="true"></div>
+      <div class="porta__contenido">
+        <p class="porta__label">Northpoint · El portafolio</p>
+        <h3 class="porta__titulo">Las estadísticas crecen adentro.</h3>
+        <p class="porta__texto">Cómo va creciendo el portafolio — los números y el proceso completo — se comparte únicamente con los suscriptores de Northpoint. Ahí está la cocina; aquí, la puerta.</p>
+        <a class="btn btn--acento" href="https://northpointcapital.io" target="_blank" rel="noopener">Suscribirse a Northpoint →</a>
+        <p class="porta__nota">Rendimientos pasados no garantizan rendimientos futuros. <a href="aviso-legal.html">Aviso legal</a></p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:80px">El sistema</p>
+    <h3 class="titulo" style="font-size:clamp(30px,4.4vw,52px)">Cuatro picos. Una sola subida.</h3>
+    <div class="prosa">
+      <p class="parrafo">Detrás de todo esto hay un sistema que ordena mi vida completa en cuatro pilares: <strong>CUERPO, MENTE, ALMA y DINERO</strong>. Todavía lo estoy puliendo para contarlo como se merece — por ahora, quédate con esto: cada directo, cada video y cada decisión que me veas tomar pertenece a uno de esos cuatro picos.</p>
+    </div>
+    <a class="link-sistema" href="pilares.html">Conocer el sistema →</a>
+  </div>
+</section>
+
+
+<!-- ════════ 06 EL DOCUMENTO (blanco) ════════ -->
+<section class="sec sec--light" style="border-top:1px solid var(--linea-luz)" aria-labelledby="t-documento">
+  <div class="wrap">
+    <p class="eyebrow">05 · El documento</p>
+    <h2 class="titulo" id="t-documento">24 cosas a los 24.</h2>
+    <div class="prosa">
+      <p class="parrafo">Hace un año, el día que cumplí 24, escribí una lista en mi teléfono. No era contenido: era un documento privado que empezaba así — <em>"Hoy cumplo 24 años, y estoy feliz y agradecido con la vida… no ha sido fácil y todavía queda un camino muy importante en esta aventura."</em> Lo publico casi intacto, solo con la ortografía peinada, porque un documento con fecha vale más que cualquier bio pulida.</p>
+      <p class="destacado">"Yo ya había visto, en mis pensamientos, la versión en la que me he convertido hoy."</p>
+    </div>
+
+    <div class="doc24">
+      <div class="doc24__item"><span class="doc24__num">01</span><p class="doc24__texto">Si no lucho por mis sueños, no tengo nada por qué luchar.</p></div>
+      <div class="doc24__item"><span class="doc24__num">02</span><p class="doc24__texto">Yo soy el único responsable de la realidad que quiero estar viviendo y de la vida que voy a vivir — y vivo.</p></div>
+      <div class="doc24__item"><span class="doc24__num">03</span><p class="doc24__texto">Dios es parte de mí y yo soy parte de Dios.</p></div>
+      <div class="doc24__item"><span class="doc24__num">04</span><p class="doc24__texto">Primero son mis pensamientos: tengo que tener clara la meta en mi mente para saber a dónde quiero llegar.</p></div>
+      <div class="doc24__item"><span class="doc24__num">05</span><p class="doc24__texto">Mi objetivo es el mismo, pero el plan puede cambiar.</p></div>
+      <div class="doc24__item"><span class="doc24__num">06</span><p class="doc24__texto">El ambiente influye en el jugador: estar con personas inteligentes y que me inspiran ha sido clave para saber a dónde quiero ir. Eres el promedio de las cinco personas con las que te juntas.</p></div>
+      <div class="doc24__item"><span class="doc24__num">07</span><p class="doc24__texto">Mi cerebro es la máquina que mueve al cuerpo; alimentarlo sanamente y cuidar lo que consumo hace la diferencia.</p></div>
+      <div class="doc24__item"><span class="doc24__num">08</span><p class="doc24__texto">Al igual que Dios, soy un ser CREADOR.</p></div>
+      <div class="doc24__item"><span class="doc24__num">09</span><p class="doc24__texto">El mundo me va a olvidar probablemente en 100 años; disfrutaré la única vida que tengo.</p></div>
+      <div class="doc24__item"><span class="doc24__num">10</span><p class="doc24__texto">Si no soy feliz con lo que ya tengo, no seré feliz con lo que el universo me va a dar.</p></div>
+      <div class="doc24__item"><span class="doc24__num">11</span><p class="doc24__texto">Enfocarme en mí me ha dado mi paz mental.</p></div>
+      <div class="doc24__item"><span class="doc24__num">12</span><p class="doc24__texto">El miedo solo es el empujón que necesitas para hacer las cosas con las que sueñas.</p></div>
+      <div class="doc24__item"><span class="doc24__num">13</span><p class="doc24__texto">La sociedad me ha mentido; pensar fuera de la caja me ha dejado ver las oportunidades que están enfrente de mí.</p></div>
+      <div class="doc24__item"><span class="doc24__num">14</span><p class="doc24__texto">El mundo puede estar en contra de mis valores y pensamientos, pero está en mí luchar por ellos.</p></div>
+      <div class="doc24__item"><span class="doc24__num">15</span><p class="doc24__texto">No traicionarme a mí mismo y ser auténtico es lo que le da sentido a mi vida.</p></div>
+      <div class="doc24__item"><span class="doc24__num">16</span><p class="doc24__texto">El amor, la abundancia y la paz mental: un privilegio que sí tengo.</p></div>
+      <div class="doc24__item"><span class="doc24__num">17</span><p class="doc24__texto">Confiar en mi intuición ha sido clave para lo que me he convertido hoy.</p></div>
+      <div class="doc24__item"><span class="doc24__num">18</span><p class="doc24__texto">Soy lo que pienso la mayoría del tiempo en mi estado subconsciente.</p></div>
+      <div class="doc24__item"><span class="doc24__num">19</span><p class="doc24__texto">Todo lo que me proponga lo puedo lograr; solo es cuestión de tiempo y esfuerzo.</p></div>
+      <div class="doc24__item"><span class="doc24__num">20</span><p class="doc24__texto">Trabajar por mis sueños es mucho mejor que trabajar para los sueños de alguien más.</p></div>
+      <div class="doc24__item"><span class="doc24__num">21</span><p class="doc24__texto">Aprender y tomar en cuenta las acciones de las personas que admiro y que ya han logrado objetivos similares a los que quiero.</p></div>
+      <div class="doc24__item"><span class="doc24__num">22</span><p class="doc24__texto">Vine al mundo a ser feliz.</p></div>
+      <div class="doc24__item"><span class="doc24__num">23</span><p class="doc24__texto">Yo soy un reflejo de mis pensamientos.</p></div>
+      <div class="doc24__item"><span class="doc24__num">24</span><p class="doc24__texto">Disfruto el proceso.</p></div>
+    </div>
+
+    <div class="prosa doc24__coda">
+      <p class="parrafo parrafo--secundario">Un año después, varias de esas líneas ya maduraron en los principios de arriba: la 24 se convirtió en el principio 8 — comparto la subida porque disfruto la subida —, la 21 explica por qué cito a Dalio en vez de fingir que todo lo aprendí solo, y la 6 es la razón exacta de hacer esto con testigos. Algunas las firmaría hoy con más matices; otras todavía me las está cobrando la montaña. Así se ve un sistema creciendo en público: con fecha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 07 CIERRE (negro con CTA) ════════ -->
+<section class="sec sec--dark" aria-labelledby="t-cierre">
+  <div class="wrap">
+    <p class="eyebrow">06 · A dónde va esto</p>
+    <h2 class="titulo" id="t-cierre">No sé dónde termina la subida. Todavía.</h2>
+    <div class="prosa">
+      <p class="parrafo">Puede terminar en algo grande o en otro intento archivado con la verdad por delante. Las dos cosas me sirven: una construye, la otra enseña. Yo ya vi la versión en la que me voy a convertir — la vi primero en mis pensamientos, como todo lo que he logrado. Lo que falta es la parte que más me gusta: ganármela. Vine al mundo a ser feliz — y esto, construir y compartir la subida, es exactamente eso. Lo único que te puedo garantizar es lo que vas a ver mientras tanto — un tipo real haciendo el trabajo, 1% cada día, a la vista de cualquiera.</p>
+      <p class="parrafo parrafo--secundario">Si quieres verificarlo, no me creas: mira los directos. Y si prefieres el razonamiento por escrito, una vez a la semana lo mando por correo.</p>
+    </div>
+    <!-- feature-carousel → carrusel scroll-snap -->
+    <div class="cierre__galeria cierre__galeria--carrusel">
+      <img src="fotos/nb-sonrisa.jpg" alt="Gregorio sonriendo, retrato en blanco y negro" loading="lazy">
+      <img src="fotos/nb-trading.jpg" alt="Gregorio de perfil frente a monitores con gráficas" loading="lazy">
+      <img src="fotos/nb-hero.jpg" alt="Gregorio, retrato editorial en estudio" loading="lazy">
+    </div>
+    <div class="cierre__botones">
+      <a class="btn btn--acento" href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">Ver los directos</a>
+      <a class="btn" href="index.html#newsletter">Unirme a la Letter</a>
+    </div>
+  </div>
+</section>
+</article>
+</main>
+
+<!-- ════════ FOOTER (blanco — efecto montaña, canon) ════════ -->
+<footer class="footer">
+  <div class="footer__paisaje" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="capa capa--lejana" fill="rgba(7,9,12,.05)" d="M0,200 L0,120 L140,60 L260,110 L420,40 L560,100 L720,24 L880,90 L1040,50 L1200,110 L1320,70 L1440,130 L1440,200 Z"/>
+      <path class="capa capa--cercana" fill="rgba(7,9,12,.09)" d="M0,200 L0,150 L180,90 L340,140 L520,70 L700,130 L900,50 L1080,120 L1260,80 L1440,140 L1440,200 Z"/>
+    </svg>
+  </div>
+  <svg class="logo" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="4,44 20,26 30,34 44,18 56,30 72,10 84,24 116,2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- wordmark monocromo: el 888 solo lleva azul sobre fondos oscuros (regla canónica) -->
+  <p class="footer__firma">GSNOW888 — 1% cada día</p>
+  <p class="footer__identidad">GSNOW888 es Gregorio Sánchez Calderón.</p>
+  <div class="footer__handles">
+    <a href="index.html">Canal GSNOW888</a>
+    <a href="historia.html#perfil">Perfil</a>
+    <a href="https://www.youtube.com/@Cuatro4tros" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p class="footer__descargo">Todo lo publicado aquí son opiniones personales con fines educativos. No es asesoría de inversión. <a href="aviso-legal.html">Aviso legal</a></p>
+  <p class="footer__linea">Cuerpo · Mente · Alma · Dinero</p>
+</footer>
+
+<!-- Nieve canónica (solo la cabecera tiene canvas.nieve) -->
+<script>
+(function(){
+  var c=document.querySelector('canvas.nieve');if(!c)return;var x=c.getContext('2d'),W,H,F=[];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+  function build(){F=[];var N=Math.round(W*H/18000);for(var i=0;i<N;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,s:.25+Math.random()*.9,a:.12+Math.random()*.45,p:Math.random()*6.28})}
+  function frame(){x.clearRect(0,0,W,H);for(var i=0;i<F.length;i++){var f=F[i];x.globalAlpha=f.a;x.beginPath();x.arc(f.x,f.y,f.r,0,6.28);x.fillStyle='#FFFFFF';x.fill();if(!reduce){f.y+=f.s;f.x+=Math.sin(f.p+=.004)*.18;if(f.y>H+4){f.y=-4;f.x=Math.random()*W}}}x.globalAlpha=1;if(!reduce)requestAnimationFrame(frame)}
+  addEventListener('resize',function(){size();build();if(reduce)frame()});
+  size();build();frame();
+})();
+</script>
+<script>
+/* Efecto montaña del cierre (canon): trazo que se dibuja + paisaje que emerge */
+(function(){
+  var footer=document.querySelector('.footer');if(!footer)return;
+  var poly=footer.querySelector('svg.logo polyline');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(poly&&!reduce){
+    var L=poly.getTotalLength();
+    poly.style.strokeDasharray=L;
+    poly.style.strokeDashoffset=L;
+  }
+  function activar(){
+    footer.classList.add('en-vista');
+    if(poly&&!reduce)poly.style.strokeDashoffset='0';
+  }
+  if(reduce||!('IntersectionObserver' in window)){activar();return}
+  var io=new IntersectionObserver(function(es){
+    if(es[0].isIntersecting){activar();io.disconnect()}
+  },{threshold:.3});
+  io.observe(footer);
+})();
+</script>
+<script>
+/* Menú desplegable global */
+(function(){
+  var btn=document.querySelector('.nav__menu-btn'),menu=document.getElementById('menu-global');
+  if(!btn||!menu)return;
+  function cerrar(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(){
+    var abierto=!menu.hidden;
+    menu.hidden=abierto;btn.setAttribute('aria-expanded',String(!abierto));
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+  document.addEventListener('click',function(e){
+    if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))cerrar();
+  });
+})();
+</script>
+</body>
+</html>
