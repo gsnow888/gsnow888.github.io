@@ -747,8 +747,10 @@ body::after{
   var v=document.querySelector('.hero__video');if(!v)return;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var conn=navigator.connection||{};
-  if(reduce||conn.saveData||!matchMedia('(min-width:720px)').matches)return;
-  var s=document.createElement('source');s.src='media/hero-montana.mp4';s.type='video/mp4';
+  if(reduce||conn.saveData)return;
+  /* móvil recibe la versión ligera (720p, ~1MB); desktop la completa */
+  var movil=!matchMedia('(min-width:720px)').matches;
+  var s=document.createElement('source');s.src=movil?'media/hero-montana-movil.mp4':'media/hero-montana.mp4';s.type='video/mp4';
   v.appendChild(s);v.load();
   var p=v.play();if(p&&p.catch)p.catch(function(){});
 })();

@@ -547,7 +547,7 @@ body::after{
   var v=document.querySelector('.hero__video');if(!v)return;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var conn=navigator.connection||{};
-  if(reduce||conn.saveData||!matchMedia('(min-width:720px)').matches)return;
+  if(reduce||conn.saveData)return;
   var s=document.createElement('source');s.src='media/hero-charts.mp4';s.type='video/mp4';
   v.appendChild(s);v.load();
   var p=v.play();if(p&&p.catch)p.catch(function(){});
