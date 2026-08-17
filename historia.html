@@ -398,6 +398,13 @@ body::after{
 .enlace-mentor{color:var(--copo);border-bottom:1px solid var(--acento);transition:color var(--t)}
 .enlace-mentor:hover{color:var(--acento)}
 </style>
+<style>
+/* Cita de Maquiavelo con retrato al lado */
+.cita-grid{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;margin:48px 0;max-width:900px}
+.cita-grid .destacado--cita{margin:0;max-width:none}
+.cita-foto{width:100%;max-width:360px;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--linea);filter:grayscale(1) contrast(1.05);justify-self:center}
+@media (min-width:720px){.cita-grid{grid-template-columns:1.2fr .8fr}}
+</style>
 </head>
 <body>
 
@@ -449,7 +456,10 @@ body::after{
       <!-- Cita verbatim del post de IG @gsnow888 (verificada contra screenshot, 2026-08-17).
            [CONFIRMAR] ortografía de nombres: "Ricardo Zuribia", "Julián Alborna", "Pedro Triple P" —
            y de preferencia avisar a los mencionados antes de publicar. -->
-      <p class="destacado">"El hombre sabio debe únicamente seguir los caminos que abrieron otros, tenidos por superiores, e imitar bien a los que han sobresalido, a fin de que, si no se consigue igualarles, se les acercase al menos una cosa." — Nicolás Maquiavelo</p>
+      <div class="cita-grid">
+        <p class="destacado destacado--cita">"El hombre sabio debe únicamente seguir los caminos que abrieron otros, tenidos por superiores, e imitar bien a los que han sobresalido, a fin de que, si no se consigue igualarles, se les acercase al menos una cosa." — Nicolás Maquiavelo</p>
+        <img class="cita-foto" src="fotos/bn-contrapicado.jpg" alt="Gregorio Sánchez Calderón, retrato en blanco y negro con brazos cruzados" loading="lazy">
+      </div>
       <p class="parrafo">Me lo tomé literal. A los 24 escribí que eres el promedio de las cinco personas con las que te juntas — y decidí que mi promedio no iba a ser un accidente. Me rodeé, a propósito, de mentores y maestros que ya habían subido montañas que yo apenas veía de lejos: multimillonarios y expertos, cada uno excelentísimo en un terreno distinto — lo espiritual, las finanzas, la tecnología, la inversión, la educación financiera.</p>
       <p class="parrafo">De esa mesa aprendí y sigo aprendiendo: Ricardo Zuribia, Esteban Echevarría de <a class="enlace-mentor" href="https://www.mvdtrading.com/" target="_blank" rel="noopener">MVD Trading Academy</a>, Julián Alborna, Ricardo Leyva, Juan Lombana, Eduardo Vázquez, Pedro "Triple P"… entre otros. A cada uno le debo una pieza distinta del mapa que hoy uso para subir. Pasar esta experiencia con seres humanos increíbles me ha llenado el alma.</p>
       <p class="parrafo">Ray Dalio escribió sus principios para que su vida no fuera un misterio — ni para los demás, ni para él mismo — y esa idea me ordenó la cabeza: si voy a encender una cámara y dejar que me veas entrenar, leer, sentarme en silencio y operar los mercados, lo mínimo que te debo — y que me debo — es saber quién soy y bajo qué reglas juego. Y una promesa más concreta: como fundador de Nex Digital, cofundador de Northpoint y de los negocios que se vayan sumando a esta aventura, aquí vas a aprender cómo se vive con autenticidad — decisiones reales, empresas reales, y la vida completa sin maquillar.</p>
