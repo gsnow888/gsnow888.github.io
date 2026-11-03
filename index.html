@@ -214,6 +214,7 @@ body.is-ready .hero__nota{opacity:.85}
             mask-image:radial-gradient(ellipse 66% 78% at 50% 44%,#000 36%,transparent 84%)}
   .hero__fade{height:52%}
 }
+@media (min-width:768px) and (max-height:840px){.hero{min-height:860px}}
 @media (min-width:1200px){
   .hero__img{height:50%;width:min(100%,640px)}
   .hero__img img{object-position:50% 24%}
@@ -264,15 +265,15 @@ body.is-ready .hero__nota{opacity:.85}
 .np{padding-top:0}
 .np__hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:calc(var(--nav-h) + 64px) 0 96px}
 .np__bg{position:absolute;inset:0;z-index:0}
-.np__bg img{width:100%;height:100%;object-fit:cover;object-position:0% 50%;filter:grayscale(1) contrast(1.05);opacity:.72}
-.np__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,12,.15) 0%,rgba(7,9,12,.5) 42%,rgba(7,9,12,.9) 75%,var(--negro) 100%),linear-gradient(180deg,rgba(7,9,12,.6) 0%,transparent 30%,transparent 70%,var(--negro) 100%)}
+.np__bg img{width:100%;height:100%;object-fit:cover;object-position:100% 50%;filter:grayscale(1) contrast(1.05);opacity:.72}
+.np__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--negro) 0%,rgba(7,9,12,.9) 26%,rgba(7,9,12,.5) 58%,rgba(7,9,12,.15) 100%),linear-gradient(180deg,rgba(7,9,12,.6) 0%,transparent 30%,transparent 70%,var(--negro) 100%)}
 .np__hero .wrap{position:relative;z-index:1;width:100%}
 .np__text{max-width:760px}
-@media (min-width:900px){.np__hero .wrap{display:flex;justify-content:flex-end}.np__text{width:62%}.np__hero .h-xl{font-size:clamp(40px,5.6vw,80px)}}
+@media (min-width:900px){.np__hero .wrap{display:flex;justify-content:flex-start}.np__text{width:62%}.np__hero .h-xl{font-size:clamp(40px,5.6vw,80px)}}
 @media (max-width:767px){
   .np__hero{align-items:flex-end;padding-bottom:56px}
   .np__bg{height:58%}
-  .np__bg img{object-position:22% 50%}
+  .np__bg img{object-position:72% 50%}
   .np__bg::after{background:linear-gradient(180deg,rgba(7,9,12,.5) 0%,transparent 30%,transparent 55%,var(--negro) 100%)}
 }
 .np__hero .h-xl{max-width:14ch;margin-bottom:24px}
@@ -321,7 +322,7 @@ body.is-ready .hero__nota{opacity:.85}
 
 /* foto fija lateral (filosofía y principios) */
 .foto{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:4px}
-.foto img{width:100%;height:100%;object-fit:cover;object-position:0% 50%;filter:grayscale(1) contrast(1.05);transform:scale(1.04);transition:transform 1.2s var(--ease)}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.05);transform:scale(1.04);transition:transform 1.2s var(--ease)}
 .foto.in img{transform:none}
 .foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,var(--negro) 100%),linear-gradient(180deg,transparent 70%,var(--negro) 100%)}
 .foto figcaption{position:absolute;left:20px;bottom:18px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--niebla)}
@@ -346,7 +347,7 @@ body.is-ready .hero__nota{opacity:.85}
 @media (min-width:900px){
   .filos__layout{grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
   .filos .foto{aspect-ratio:4/5;position:sticky;top:calc(var(--nav-h) + 32px)}
-  .filos .foto img{object-position:12% 50%}
+  .filos .foto img{object-position:50% 18%}
   .idea{padding:32px 0}
 }
 
@@ -609,7 +610,7 @@ body.is-ready .hero__nota{opacity:.85}
 <!-- ============ 02 · NORTHPOINT ============ -->
 <section class="sec sec--dark np" id="northpoint" data-theme="dark" aria-labelledby="t-np">
   <div class="np__hero">
-    <div class="np__bg" aria-hidden="true"><img src="fotos/gregorio-ciudad.jpg" alt="" width="1800" height="1005" loading="lazy"></div>
+    <div class="np__bg" aria-hidden="true"><img src="fotos/gregorio-ciudad.jpg" alt="" width="1800" height="1208" loading="lazy"></div>
     <div class="wrap">
       <div class="np__text">
         <p class="eyebrow" data-reveal>02 · Northpoint · CEO y cofundador</p>
@@ -622,11 +623,11 @@ body.is-ready .hero__nota{opacity:.85}
   <div class="wrap filos">
     <p class="eyebrow" data-reveal>La filosofía · tres ideas</p>
     <h2 class="h-l" data-reveal style="--i:1">Qué pasa con una vida cuando el trabajo deja de ser obligatorio.</h2>
-    <p class="lead" data-reveal style="--i:2">Praxis publicó tres ensayos que ordenaron la pregunta: <em>Life After Labor</em>, <em>Singularity Politics</em> y <em>Sovereign Intelligence</em>. Les debemos las preguntas. Las respuestas son nuestras.</p>
+    <p class="lead" data-reveal style="--i:2">Tres ideas sostienen Anthropos: qué hacemos cuando la máquina hace el trabajo, qué pasa cuando la inteligencia concentra el poder, y quién decide qué optimiza. Son las preguntas de esta era. Las respuestas son nuestras.</p>
     <div class="filos__layout">
       <figure class="foto" data-foto>
-        <img src="fotos/gregorio-perfil.jpg" alt="Gregorio Sánchez Calderón de perfil, mirando hacia la luz" width="1800" height="1005" loading="lazy">
-        <figcaption>Mirar lejos. Decidir cerca.</figcaption>
+        <img src="fotos/gregorio-brazos.jpg" alt="Gregorio Sánchez Calderón de brazos cruzados, retrato en blanco y negro" width="1600" height="2143" loading="lazy">
+        <figcaption>Northpoint Cities · Anthropos</figcaption>
       </figure>
       <div>
         <div class="ideas3">
@@ -803,7 +804,7 @@ body.is-ready .hero__nota{opacity:.85}
       </div>
     </div>
     <figure class="pub__foto" data-foto>
-      <img src="fotos/gregorio-sonrisa.jpg" alt="Gregorio Sánchez Calderón sonriendo, retrato en blanco y negro" width="1600" height="1986" loading="lazy">
+      <img src="fotos/gregorio-sonrisa.jpg" alt="Gregorio Sánchez Calderón sonriendo en una oficina" width="1600" height="1987" loading="lazy">
       <figcaption>Gregorio · 2026</figcaption>
     </figure>
   </div>
