@@ -128,6 +128,7 @@ p{margin:0}
 .hero__eyebrow{font-size:24px;font-weight:400;line-height:1.5;color:var(--ink-2);margin-bottom:4px}
 .hero__h1{margin:0 0 20px;font-size:76px;font-weight:500;line-height:1.5;letter-spacing:.0094em;color:#fff;text-wrap:balance}
 .hero__h1 span{display:block}
+.hero__name{font-size:15px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin:0 0 22px}
 .hero .socials{justify-content:center}
 @media (max-width:767px){
   .hero{padding-top:200px;justify-content:flex-end;min-height:100svh;padding-bottom:72px}
@@ -135,14 +136,16 @@ p{margin:0}
   .hero__eyebrow{font-size:18px}
   .hero__h1{font-size:40px;font-weight:700;line-height:1.35;letter-spacing:-.005em;margin-bottom:16px}
   .hero .socials__label{display:none}
+  .hero__name{font-size:12px;letter-spacing:.18em;margin-bottom:14px}
 }
 @media (min-width:768px) and (max-width:1199px){.hero__h1{font-size:60px}}
 /* laptops de pantalla baja: el texto baja para no tapar la cara */
 @media (min-width:768px) and (max-height:820px){
   .hero{justify-content:flex-end;padding-bottom:40px}
   .hero__bg img{object-position:50% 0}
-  .hero__h1{font-size:60px;line-height:1.3;margin-bottom:16px}
+  .hero__h1{font-size:60px;line-height:1.3;margin-bottom:14px}
   .hero__eyebrow{font-size:20px}
+  .hero__name{margin-bottom:16px}
   .state:not(.state--final) .state__inner{margin-top:16vh}
 }
 
@@ -311,6 +314,12 @@ p{margin:0}
 .modal__close svg{width:16px;height:16px}
 .modal h3{margin:0 0 6px;font-size:28px;font-weight:500}
 .modal__sub{color:var(--ink-3);margin-bottom:28px}
+.bio{display:grid;grid-template-columns:168px 1fr;gap:28px;align-items:start;margin-bottom:32px}
+.bio img{width:100%;height:auto;border-radius:16px;filter:grayscale(1)}
+.bio__text p{font-size:16px;line-height:1.6;color:#e2e2e2;margin-bottom:14px}
+.bio__text p:last-child{margin-bottom:0}
+.modal__h4{margin:0 0 16px;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cian)}
+@media (max-width:599px){.bio{grid-template-columns:1fr}.bio img{max-width:150px}}
 .tl{list-style:none;margin:0;padding:0;display:grid;gap:18px}
 .tl li{display:grid;grid-template-columns:92px 1fr;gap:16px;padding-bottom:18px;border-bottom:1px dashed var(--line)}
 .tl li:last-child{border:0}
@@ -362,15 +371,18 @@ p{margin:0}
   <div class="hero__bg" aria-hidden="true"><picture><source media="(max-width:767px)" srcset="/fotos/v3-hero-m.jpg"><img src="/fotos/v3-hero.jpg" alt="" width="2400" height="1500" fetchpriority="high"></picture></div>
   <p class="hero__eyebrow rv">Hola, soy el CEO y cofundador de Northpoint</p>
   <h1 class="hero__h1 rv rv-d1"><span>Una vida se vive</span><span>creando, no consumiendo.</span></h1>
-  <div class="socials rv rv-d2" data-socials><span class="socials__label">Sígueme en:</span></div>
+  <p class="hero__name rv rv-d2">Gregorio Sánchez Calderón</p>
+  <div class="socials rv rv-d3" data-socials><span class="socials__label">Sígueme en:</span></div>
 </section>
 
 <!-- ============ DECLARACIÓN ============ -->
 <section class="state" id="historia">
   <div class="state__bg" aria-hidden="true"><img src="/fotos/v3-skyline.jpg" alt="" width="2400" height="1500" loading="lazy"></div>
   <div class="state__inner">
-    <h2 class="h2 rv">Abogado, inversionista, fundador de NEXUS Digital y CEO de Northpoint.</h2>
-    <button class="btn rv rv-d1" type="button" data-historia>Conoce mi historia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    <p class="eyebrow rv" style="color:#fff">Quién soy</p>
+    <h2 class="h2 rv rv-d1">Abogado, inversionista, fundador de NEXUS Digital y CEO de Northpoint.</h2>
+    <p class="state__p rv rv-d2">Gregorio Sánchez Calderón es Licenciado en Derecho por la Universidad Anáhuac Querétaro, con práctica en fideicomisos, contratos y protección patrimonial. Dirige Northpoint, grupo mexicano de inversión, patrimonio, tecnología, educación, ciudades y filantropía.</p>
+    <button class="btn rv rv-d3" type="button" data-historia>Presentación completa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
 </section>
 
@@ -417,7 +429,7 @@ p{margin:0}
         </article>
         <article class="car__item prod">
           <div class="prod__cover"><small>Educación</small><span class="prod__num">04</span><svg class="prod__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.2 8.8L23 12l-8.8 2.2L12 23l-2.2-8.8L1 12l8.8-2.2z"/></svg></div>
-          <div><p class="prod__eyebrow">Academia</p><h3 class="prod__title">Aprender a operar como la mesa.</h3><p class="prod__desc">Clases a su ritmo y programas con certificado. El riesgo se define primero; después, todo lo demás.</p><div class="prod__cta"><a class="btn btn--white" href="https://northpointcapital.io/" target="_blank" rel="noopener">Conocer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a><span class="prod__meta">A su ritmo</span></div></div>
+          <div><p class="prod__eyebrow">Educación financiera</p><h3 class="prod__title">Entender el dinero y desbloquear los patrones del subconsciente que frenan la abundancia.</h3><p class="prod__desc">Programas de educación financiera para ordenar las finanzas personales y trabajar las creencias que impiden tener abundancia. Lo financiero primero; lo espiritual, también.</p><div class="prod__cta"><a class="btn btn--white" href="https://northpointcapital.io/" target="_blank" rel="noopener">Conocer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a><span class="prod__meta">En diseño</span></div></div>
         </article>
         <article class="car__item prod">
           <div class="prod__cover"><small>Ciudades</small><span class="prod__num">05</span><svg class="prod__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.2 8.8L23 12l-8.8 2.2L12 23l-2.2-8.8L1 12l8.8-2.2z"/></svg></div>
@@ -450,13 +462,13 @@ p{margin:0}
     <div class="car car--bleed" data-car>
       <div class="car__track" tabindex="0" aria-label="Ocho principios, desliza para ver más">
         <article class="car__item tall"><img src="/fotos/v3-p1.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">01</span><h3 class="tall__h">Reglas antes que decisiones.</h3><p class="tall__p">Toda decisión importante tiene una regla escrita antes. Si no hay regla, no hay decisión: hay impulso.</p></article>
-        <article class="car__item tall"><span class="tall__num">02</span><h3 class="tall__h">El riesgo se define primero.</h3><p class="tall__p">La pérdida máxima se fija antes de abrir cualquier posición, en los mercados y en los negocios.</p></article>
+        <article class="car__item tall"><img src="/fotos/v3-c2.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">02</span><h3 class="tall__h">El riesgo se define primero.</h3><p class="tall__p">La pérdida máxima se fija antes de abrir cualquier posición, en los mercados y en los negocios.</p></article>
         <article class="car__item tall"><img src="/fotos/v3-p2.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">03</span><h3 class="tall__h">Realidad sobre narrativa.</h3><p class="tall__p">Un negocio sin números es una historia que me cuento. Mido, comparo y acepto lo que dicen los datos, aunque incomoden.</p></article>
-        <article class="car__item tall"><span class="tall__num">04</span><h3 class="tall__h">Responsabilidad total.</h3><p class="tall__p">Yo soy el único responsable de la realidad que vivo. Nadie decide por mí y nadie carga mi cuenta.</p></article>
+        <article class="car__item tall"><img src="/fotos/v3-c4.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">04</span><h3 class="tall__h">Responsabilidad total.</h3><p class="tall__p">Yo soy el único responsable de la realidad que vivo. Nadie decide por mí y nadie carga mi cuenta.</p></article>
         <article class="car__item tall"><img src="/fotos/v3-p3.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">05</span><h3 class="tall__h">El miedo es un empujón.</h3><p class="tall__p">Cuando algo me da miedo es porque importa. Lo hago con miedo, con reglas y con testigos.</p></article>
-        <article class="car__item tall"><span class="tall__num">06</span><h3 class="tall__h">Elijo mi mesa a propósito.</h3><p class="tall__p">Soy el promedio de las personas con las que me junto. Aprendo de quien ya subió la montaña que yo apenas veo de lejos.</p></article>
+        <article class="car__item tall"><img src="/fotos/v3-c6.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">06</span><h3 class="tall__h">Elijo mi mesa a propósito.</h3><p class="tall__p">Soy el promedio de las personas con las que me junto. Aprendo de quien ya subió la montaña que yo apenas veo de lejos.</p></article>
         <article class="car__item tall"><img src="/fotos/v3-p4.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">07</span><h3 class="tall__h">Ambición al máximo, estado actual exacto.</h3><p class="tall__p">Cuento la visión con toda la confianza y el presente sin un gramo de exageración. Si alguien lo verifica, resulta cierto.</p></article>
-        <article class="car__item tall"><span class="tall__num">08</span><h3 class="tall__h">1 % cada día, disfrutando el proceso.</h3><p class="tall__p">No persigo la cima: subo. El objetivo es el mismo, el plan cambia, y el proceso se disfruta.</p></article>
+        <article class="car__item tall"><img src="/fotos/v3-c8.jpg" alt="" width="720" height="1280" loading="lazy"><span class="tall__num">08</span><h3 class="tall__h">1 % cada día, disfrutando el proceso.</h3><p class="tall__p">No persigo la cima: subo. El objetivo es el mismo, el plan cambia, y el proceso se disfruta.</p></article>
       </div>
       <div class="car__nav">
         <button class="car__btn" type="button" data-prev aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -534,7 +546,7 @@ p{margin:0}
       </div>
       <div class="foot__col">
         <h4>Quién soy</h4>
-        <button type="button" data-historia>Mi historia</button>
+        <button type="button" data-historia>Presentación</button>
         <a href="#principios">Principios</a>
         <a href="#ideas">24 ideas</a>
       </div>
@@ -560,8 +572,18 @@ p{margin:0}
   <div class="modal__bg" data-close></div>
   <div class="modal__box">
     <button class="modal__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <h3 id="modalTitle">Mi historia</h3>
-    <p class="modal__sub">Un timelapse, no una lista de logros. El objetivo es el mismo; el plan cambia cuando la realidad lo pide.</p>
+    <h3 id="modalTitle">Gregorio Sánchez Calderón</h3>
+    <p class="modal__sub">CEO y cofundador de Northpoint · Querétaro, México</p>
+    <div class="bio">
+      <img src="/fotos/v3-bio.jpg" alt="Retrato de Gregorio Sánchez Calderón" width="900" height="1125" loading="lazy">
+      <div class="bio__text">
+        <p>Gregorio Sánchez Calderón es abogado, inversionista y empresario mexicano. Licenciado en Derecho por la Universidad Anáhuac Querétaro, inició su carrera en el ámbito jurídico financiero e inmobiliario, donde se especializó en fideicomisos, contratos y estructuras de protección patrimonial.</p>
+        <p>Es CEO y cofundador de Northpoint, grupo mexicano que desarrolla y opera proyectos de inversión, patrimonio, tecnología, educación, ciudades y filantropía. Encabeza la estrategia de inversión y la estructura patrimonial del grupo, y es autor de los memos de mercado de su mesa.</p>
+        <p>Es fundador de NEXUS Digital, estudio que aplica inteligencia artificial y automatización a negocios reales. Desde Northpoint Cities impulsa Anthropos, un estudio conceptual para la primera ciudad concebida desde cero para la era de la inteligencia artificial.</p>
+        <p>Su trabajo se rige por principios escritos que revisa cada trimestre contra la realidad.</p>
+      </div>
+    </div>
+    <h4 class="modal__h4">Trayectoria</h4>
     <ol class="tl">
       <li><b>2020</b><div><strong>Empiezo Derecho en la Anáhuac Querétaro.</strong><p>Cinco años leyendo contratos y fideicomisos. Ahí aprendí la pregunta que todavía uso para todo: quién es dueño de qué, y bajo qué reglas.</p></div></li>
       <li><b>2024</b><div><strong>Fincalosa y REMAX, en Morelia.</strong><p>Asesor jurídico financiero e inmobiliario. Fideicomisos y contratos todos los días, para que cada operación fuera transparente y segura.</p></div></li>
